@@ -1,0 +1,38 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+---
+
+loader: adhoc_taskgraph.loader.single_dep:loader
+
+kind-dependencies:
+    - fetch
+
+transforms:
+    - adhoc_taskgraph.transforms.signing:transforms
+    - adhoc_taskgraph.transforms.release_notifications:transforms
+    - taskgraph.transforms.task:transforms
+
+job-template:
+    description: Release-signing
+    index:
+        type: release-signing
+    attributes:
+        shipping-phase: promote
+    run-on-tasks-for: [action]
+    worker-type:
+        by-level:
+            '3': signing
+            default: dep-signing
+    worker:
+        signing-type:
+            by-level:
+                # XXX uncomment to go live
+                # '3': release-signing
+                '3': dep-signing
+                default: dep-signing
+        max-run-time: 3600
+    notifications:
+        subject: "{config[graph_config][notify][prefix]} {config[params][adhoc_name]} release-signing starting"
+        message: "{config[graph_config][notify][prefix]} {config[params][adhoc_name]} release-signing {config[params][shipping_phase]} starting on revision {config[params][adhoc_revision]}"
+

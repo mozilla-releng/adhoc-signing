@@ -1,0 +1,97 @@
+---
+trust-domain: adhoc
+
+task-priority: lowest
+# XXX once I figure out how to fix this
+#    by-level:
+#        3: very-high
+#        1: very-low
+
+taskgraph:
+    register: adhoc_taskgraph:register
+    repositories:
+        # This is the manifest repo
+        adhoc-manifest:
+            name: "Adhoc manifest"
+            project-regex: adhoc-manifest$
+            default-repository: https://github.com/mozilla-releng/adhoc-manifest
+            default-ref: master
+            ssh-secret-name: project/adhoc/adhoc-github-clone-ssh
+            type: git
+        adhoc-signing:
+            name: "Adhoc Signing"
+            project-regex: adhoc-signing$
+            default-repository: https://github.com/mozilla-releng/adhoc-signing
+            default-ref: master
+            type: git
+        staging-adhoc-manifest:
+            name: "Staging adhoc manifest"
+            project-regex: adhoc-manifest$
+            default-repository: https://github.com/mozilla-releng/adhoc-manifest
+            default-ref: master
+            ssh-secret-name: project/adhoc/adhoc-github-clone-ssh
+            type: git
+        staging-adhoc-signing:
+            # string: the name of the repo, for humans
+            name: "Staging Adhoc Signing"
+            project-regex: staging-adhoc-signing$
+            default-repository: https://github.com/mozilla-releng/staging-adhoc-signing
+            default-ref: master
+            type: git
+    cached-task-prefix: adhoc-signing
+    # XXX by project / level
+
+workers:
+    aliases:
+        b-linux:
+            provisioner: adhoc-{level}
+            implementation: docker-worker
+            os: linux
+            worker-type: 'b-linux'
+        images:
+            provisioner: adhoc-{level}
+            implementation: docker-worker
+            os: linux
+            worker-type: 'images'
+        dep-signing:
+            provisioner: scriptworker-k8s
+            implementation: scriptworker-signing
+            os: scriptworker
+            worker-type: adhoc-t-signing
+        signing:
+            provisioner: scriptworker-k8s
+            implementation: scriptworker-signing
+            os: scriptworker
+            worker-type:
+                by-level:
+                    # XXX uncomment to go live
+                    # "3": adhoc-3-signing
+                    "3": adhoc-t-signing
+                    default: adhoc-t-signing
+        shipit:
+            provisioner: scriptworker-k8s
+            implementation: scriptworker-shipit
+            os: scriptworker
+            worker-type:
+                by-level:
+                    # XXX uncomment to go live
+                    # "3": adhoc-3-shipit
+                    "3": adhoc-t-shipit
+                    default: adhoc-t-shipit
+
+notify:
+    email:
+        # TODO by-project/level
+        - aki+staging-adhoc-signing@mozilla.com
+    # TODO by-project/level
+    prefix: "[adhoc-stage]"
+
+release-promotion:
+    flavors:
+        promote:
+            target-tasks-method: promote_adhoc
+
+private-artifact-prefix: releng/adhoc
+
+scriptworker:
+    scope-prefix: project:adhoc:releng

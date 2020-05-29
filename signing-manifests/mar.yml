@@ -1,0 +1,10 @@
+---
+url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Sejw462STvKGjIAQ5dsm2g/runs/0/artifacts/public/build/target.complete.mar
+artifact-name: target.complete.mar
+bug: 12345
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+sha256: df3463a5f3f84c9d4a572d0ebbb6dce6b4bb21ebc8ba86400268e9546441ec03
+filesize: 64260074
+requestor: Aki Sasaki <asasaki@mozilla.com>
+reason: test mar signing

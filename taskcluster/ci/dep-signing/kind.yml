@@ -1,0 +1,23 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+---
+
+loader: adhoc_taskgraph.loader.single_dep:loader
+
+kind-dependencies:
+    - fetch
+
+transforms:
+    - adhoc_taskgraph.transforms.signing:transforms
+    - taskgraph.transforms.task:transforms
+
+job-template:
+    description: Ad-hoc signing
+    index:
+        type: dep-signing
+    worker-type: dep-signing
+    worker:
+        signing-type: dep-signing
+        max-run-time: 3600
+    run-on-tasks-for: ['action']
