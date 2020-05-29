@@ -1,7 +1,7 @@
 ---
 trust-domain: adhoc
 
-task-priority: lowest
+task-priority: high
 # XXX once I figure out how to fix this
 #    by-level:
 #        3: very-high
@@ -39,7 +39,6 @@ taskgraph:
             default-ref: master
             type: git
     cached-task-prefix: adhoc-signing
-    # XXX by project / level
 
 workers:
     aliases:
@@ -82,9 +81,9 @@ workers:
 notify:
     email:
         # TODO by-project/level
-        - aki+staging-adhoc-signing@mozilla.com
+        - aki+adhoc-signing@mozilla.com
     # TODO by-project/level
-    prefix: "[adhoc-stage]"
+    prefix: "[adhoc]"
 
 release-promotion:
     flavors:
