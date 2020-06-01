@@ -27,9 +27,7 @@ job-template:
     worker:
         signing-type:
             by-level:
-                # XXX uncomment to go live
-                # '3': release-signing
-                '3': dep-signing
+                '3': release-signing
                 default: dep-signing
         max-run-time: 3600
     notifications:

@@ -21,9 +21,7 @@ job-template:
     scopes:
         by-level:
             "3":
-            # XXX uncomment to go live; remove staging
-            #    - project:adhoc:releng:ship-it:server:production
-                - project:adhoc:releng:ship-it:server:staging
+                - project:adhoc:releng:ship-it:server:production
                 - project:adhoc:releng:ship-it:action:mark-as-shipped
             default:
                 - project:adhoc:releng:ship-it:server:staging

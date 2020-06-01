@@ -63,9 +63,7 @@ workers:
             os: scriptworker
             worker-type:
                 by-level:
-                    # XXX uncomment to go live
-                    # "3": adhoc-3-signing
-                    "3": adhoc-t-signing
+                    "3": adhoc-3-signing
                     default: adhoc-t-signing
         shipit:
             provisioner: scriptworker-k8s
@@ -73,9 +71,7 @@ workers:
             os: scriptworker
             worker-type:
                 by-level:
-                    # XXX uncomment to go live
-                    # "3": adhoc-3-shipit
-                    "3": adhoc-t-shipit
+                    "3": adhoc-3-shipit
                     default: adhoc-t-shipit
 
 notify:

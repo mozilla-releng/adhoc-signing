@@ -39,7 +39,6 @@ base_schema = Schema(
     {
         Required("url"): text_type,
         Required("bug"): int,
-        # XXX flesh out these enums
         Required("private-artifact"): bool,
         Required("signing-formats"): [Any(*SUPPORTED_SIGNING_FORMATS)],
         Required("sha256"): text_type,
