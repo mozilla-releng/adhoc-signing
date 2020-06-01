@@ -82,7 +82,7 @@ tasks:
                   $let:
                       level:
                           $if: 'tasks_for in ["github-push", "cron", "action"] && repoUrl == "https://github.com/mozilla-releng/adhoc-signing"'
-                          then: '1'  # XXX repository.level; also adhoc-manifest
+                          then: 3  # XXX also adhoc-manifest
                           else:
                               $if: 'tasks_for in ["cron", "action"]'
                               then: '${repository.level}'
