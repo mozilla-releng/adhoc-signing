@@ -77,7 +77,7 @@ workers:
 notify:
     email:
         # TODO by-project/level
-        - aki+adhoc-signing@mozilla.com
+        - release+adhoc-signing@mozilla.com
     # TODO by-project/level
     prefix: "[adhoc]"
 

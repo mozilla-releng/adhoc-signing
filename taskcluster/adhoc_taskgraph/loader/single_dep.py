@@ -9,9 +9,6 @@ import copy
 from voluptuous import Required
 
 from taskgraph.task import Task
-from taskgraph.util.schema import Schema
-
-schema = Schema({Required("primary-dependency", "primary dependency task"): Task})
 
 
 def loader(kind, path, config, params, loaded_tasks):
