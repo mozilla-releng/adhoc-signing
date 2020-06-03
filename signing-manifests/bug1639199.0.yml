@@ -1,0 +1,10 @@
+---
+url: https://bugzilla.mozilla.org/attachment.cgi?id=9153960
+artifact-name: esr78_switch_test.mar
+bug: 1639199
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+sha256: b43c2d8fec3bc98f25a28cabf05147c627c13b7657683a500309f11b393446fb
+filesize: 2207
+requestor: Justin Wood <jwood@mozilla.com>
+reason: test mar signing for esr switch
