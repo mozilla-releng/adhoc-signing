@@ -34,13 +34,20 @@ def create_fetch_url_task(config, name, fetch):
     workdir = '/builds/worker'
 
     # Arguments that matter to the cache digest
-    args = [
-        'bmo-attachment',
-        '--sha256', fetch['sha256'],
-        '--size', '%d' % fetch['size'],
-        '--name', artifact_name,
-        fetch['attachment-id']
-    ]
+    args = (
+        'bmo-attachment '
+        '--sha256 {} '
+        '--size {} '
+        '--name {} '
+        '{} '
+        '/builds/worker/artifacts/{}'.format(
+            fetch['sha256'],
+            fetch['size'],
+            artifact_name,
+            fetch['attachment-id'],
+            artifact_name
+            )
+    )
 
     cmd = [
         'bash',
@@ -54,5 +61,5 @@ def create_fetch_url_task(config, name, fetch):
     return {
         'command': cmd,
         'artifact_name': artifact_name,
-        'digest_data': ['bmo-attachment'] + args
+        'digest_data': args,
     }
