@@ -237,7 +237,7 @@ def main():
                      help='Size of downloaded content, in bytes')
     url.add_argument('--name', required=True,
                      help='The base filename of what we are fetching')
-    url.add_argument('attachment-id', help='Attachment ID fetch')
+    url.add_argument('attachment_id', help='Attachment ID fetch')
     url.add_argument('dest', help='Destination path')
 
     args = parser.parse_args()
