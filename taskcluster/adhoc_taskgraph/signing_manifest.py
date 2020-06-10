@@ -37,16 +37,25 @@ SUPPORTED_SIGNING_FORMATS = (
 
 base_schema = Schema(
     {
-        Required("url"): text_type,
         Required("bug"): int,
-        Required("private-artifact"): bool,
-        Required("signing-formats"): [Any(*SUPPORTED_SIGNING_FORMATS)],
         Required("sha256"): text_type,
         Required("filesize"): int,
+        Required("private-artifact"): bool,
+        Required("signing-formats"): [Any(*SUPPORTED_SIGNING_FORMATS)],
         Required("requestor"): basestring,
         Required("reason"): basestring,
-        Optional("gpg-signature"): basestring,
         Required("artifact-name"): basestring,
+        Optional("gpg-signature"): basestring,
+        Required("fetch"): Any(
+            {
+                Optional('type'): 'static-url',
+                Required('url'): basestring,
+            },
+            {
+                Required('type'): 'bmo-attachment',
+                Required('attachment-id'): Any(basestring, int)
+            }
+        ),
         Required("manifest_name"): basestring,
     }
 )
