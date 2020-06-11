@@ -12,3 +12,5 @@ transforms:
 
 job-template:
     description: 'Unsigned artifact'
+    attributes:
+        code-review: true
