@@ -14,10 +14,12 @@ transforms:
 
 job-template:
     description: Ad-hoc signing
+    attributes:
+        code-review: true
     index:
         type: dep-signing
     worker-type: dep-signing
     worker:
         signing-type: dep-signing
         max-run-time: 3600
-    run-on-tasks-for: ['action']
+    run-on-tasks-for: ['action', 'github-pull-request']

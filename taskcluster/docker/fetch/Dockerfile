@@ -24,6 +24,9 @@ RUN apt-get update && \
 
 # %include-run-task
 
+COPY fetch-bmo.py /usr/local/bin/fetch-bmo.py
+RUN chmod a+x /usr/local/bin/fetch-bmo.py
+
 ENV SHELL=/bin/bash \
     HOME=/builds/worker \
     PATH=/builds/worker/.local/bin:$PATH

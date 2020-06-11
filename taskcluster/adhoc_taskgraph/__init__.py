@@ -19,6 +19,7 @@ def register(graph_config):
         "signing_manifest",
         "target",
         "worker_types",
+        "fetches",
     ])
 
 

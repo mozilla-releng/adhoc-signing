@@ -19,11 +19,17 @@ def from_manifests(config, jobs):
         manifest = job.pop('manifest')
         job['name'] = manifest['manifest_name']
         fetch = job.setdefault("fetch", {})
-        fetch['type'] = 'static-url'
-        fetch["url"] = manifest["url"]
+        fetch['type'] = manifest["fetch"].get('type', 'static-url')
+        if fetch['type'] == 'static-url':
+            fetch["url"] = manifest["fetch"]["url"]
+            if manifest['fetch'].get('gpg-signature'):
+                fetch['gpg-signature'] = manifest['fetch'].get('gpg-signature')
+        elif fetch['type'] == 'bmo-attachment':
+            fetch['attachment-id'] = unicode(manifest["fetch"]['attachment-id'])
         fetch["sha256"] = manifest["sha256"]
         fetch["size"] = manifest["filesize"]
-        for k in ("gpg-signature", "artifact-name"):
+
+        for k in ("artifact-name", ):
             if manifest.get(k):
                 fetch[k] = manifest[k]
         job.setdefault('attributes', {})['manifest'] = manifest

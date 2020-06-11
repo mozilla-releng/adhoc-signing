@@ -1,10 +1,11 @@
 ---
-url: https://github.com/mozilla-releng/staging-adhoc-signing/raw/99e70937e8ea2aac48168e473ae5ba39b47978d1/artifacts/SignableFile.bin
-artifact-name: SignableFile.bin
 bug: 1642701
-private-artifact: false
-signing-formats: ["autograph_authenticode_stub"]
 sha256: 5de3f160913fe1764ea4d572762ad3119969648cd6e80ac40862321b6943a063
 filesize: 4096
+private-artifact: false
+signing-formats: ["autograph_authenticode_stub"]
 requestor: tjr
 reason: new cert
+artifact-name: SignableFile.bin
+fetch:
+  url: https://github.com/mozilla-releng/staging-adhoc-signing/raw/99e70937e8ea2aac48168e473ae5ba39b47978d1/artifacts/SignableFile.bin
