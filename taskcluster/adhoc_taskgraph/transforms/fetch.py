@@ -22,8 +22,8 @@ def from_manifests(config, jobs):
         fetch['type'] = manifest["fetch"].get('type', 'static-url')
         if fetch['type'] == 'static-url':
             fetch["url"] = manifest["fetch"]["url"]
-            if manifest.get('gpg-signature'):
-                fetch['gpg-signature'] = manifest.get('gpg-signature')
+            if manifest['fetch'].get('gpg-signature'):
+                fetch['gpg-signature'] = manifest['fetch'].get('gpg-signature')
         elif fetch['type'] == 'bmo-attachment':
             fetch['attachment-id'] = unicode(manifest["fetch"]['attachment-id'])
         fetch["sha256"] = manifest["sha256"]
