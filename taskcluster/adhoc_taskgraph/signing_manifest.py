@@ -45,9 +45,9 @@ base_schema = Schema(
         Required("requestor"): basestring,
         Required("reason"): basestring,
         Required("artifact-name"): basestring,
-        Optional("gpg-signature"): basestring,
         Required("fetch"): Any(
             {
+                Optional("gpg-signature"): basestring,
                 Optional('type'): 'static-url',
                 Required('url'): basestring,
             },
