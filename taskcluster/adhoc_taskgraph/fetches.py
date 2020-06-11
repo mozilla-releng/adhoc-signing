@@ -52,10 +52,7 @@ def create_fetch_url_task(config, name, fetch):
     cmd = [
         'bash',
         '-c',
-        'cd {} && '
-        '/usr/bin/python3 {} {}'.format(
-            workdir, '/builds/worker/bin/fetch-bmo.py', args
-        )
+        '/usr/local/bin/fetch-bmo.py {}'.format(args)
     ]
 
     return {

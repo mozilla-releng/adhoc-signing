@@ -24,8 +24,8 @@ RUN apt-get update && \
 
 # %include-run-task
 
-# %include taskcluster/run-task/fetch-bmo.py
-ADD topsrcdir/taskcluster/run-task/fetch-bmo.py /builds/worker/bin/fetch-bmo.py
+COPY fetch-bmo.py /usr/local/bin/fetch-bmo.py
+RUN chmod a+x /usr/local/bin/fetch-bmo.py
 
 ENV SHELL=/bin/bash \
     HOME=/builds/worker \
