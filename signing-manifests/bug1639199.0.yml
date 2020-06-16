@@ -1,7 +1,7 @@
 ---
 bug: 1639199
-sha256: b43c2d8fec3bc98f25a28cabf05147c627c13b7657683a500309f11b393446fb
-filesize: 2207
+sha256: a5283425f8bf4f439000afb51843efb359dfb43ed2be84d4b5fb799904fa78e2
+filesize: 2215
 private-artifact: false
 signing-formats: ["autograph_hash_only_mar384"]
 requestor: Justin Wood <jwood@mozilla.com>
@@ -9,4 +9,4 @@ reason: test mar signing for esr switch
 artifact-name: esr78_switch_test.mar
 fetch:
   type: bmo-attachment
-  attachment-id: 9153960
+  attachment-id: 9157100
