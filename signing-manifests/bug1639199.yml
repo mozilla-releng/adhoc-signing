@@ -1,0 +1,12 @@
+---
+bug: 1639199
+sha256: fbb46db8c8d593d2c1efa1a9b21acdaecf1ddb1b31bf7674a5e190f27f84343c
+filesize: 2155
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+requestor: Justin Wood <jwood@mozilla.com>
+reason: signing for esr78 switch
+artifact-name: esr78_switch.mar
+fetch:
+  type: bmo-attachment
+  attachment-id: 9159065
