@@ -1,0 +1,12 @@
+---
+bug: 1657029
+sha256: 4f512ef4f1eb1528702d617f24fd5202ef87be3afc0557508f6e6a0d4f8d914d
+filesize: 650752
+private-artifact: false
+signing-formats: ["autograph_authenticode"]
+requestor: Philip Lamb <plamb@mozilla.com>
+reason: Windows signing for Firefox Reality Preview
+artifact-name: FirefoxReality.exe
+fetch:
+    type: bmo-attachment
+    attachment-id: 9167795
