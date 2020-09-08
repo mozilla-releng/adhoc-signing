@@ -9,6 +9,10 @@ The easiest way is via Bugzilla.
    openssl sha256 FILENAME
    cat FILENAME | wc -c
    ```
+   Or, to find sha256 on Windows
+   ```
+   certutil -hashfile FILENAME SHA256
+   ```
 4. You can also open a PR for expediency. This is essentially copying the [template](https://github.com/mozilla-releng/adhoc-signing/blob/master/signing-manifests/example.yml.tmpl) to a `bugXXXXX` file in the [signing-manifests directory](https://github.com/mozilla-releng/adhoc-signing/tree/master/signing-manifests), and filling out the appropriate values.
 5. If your request is approved, releng will review, merge, and sign your artifact, and attach it to the bug.
 
