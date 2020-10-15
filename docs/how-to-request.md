@@ -22,7 +22,7 @@ We currently support Firefox Release Authenticode (Windows) signing, and Firefox
 
 ## Binaries larger than 10mb
 
-We don't require bugzilla attachments currently. If you can get the assignee the file to sign in some other way (Firefox Send, magic wormhole), that should be sufficient. One workaround is to land the file in a github repo somewhere.
+We don't require bugzilla attachments currently. If you can get the assignee the file to sign in some other way (magic wormhole), that should be sufficient. One workaround is to land the file in a github repo somewhere.
 
 ## Private artifacts
 
