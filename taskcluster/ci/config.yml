@@ -10,26 +10,11 @@ task-priority: high
 taskgraph:
     register: adhoc_taskgraph:register
     repositories:
-        # This is the manifest repo
-        adhoc-manifest:
-            name: "Adhoc manifest"
-            project-regex: adhoc-manifest$
-            default-repository: https://github.com/mozilla-releng/adhoc-manifest
-            default-ref: master
-            ssh-secret-name: project/adhoc/adhoc-github-clone-ssh
-            type: git
         adhoc-signing:
             name: "Adhoc Signing"
             project-regex: adhoc-signing$
             default-repository: https://github.com/mozilla-releng/adhoc-signing
             default-ref: master
-            type: git
-        staging-adhoc-manifest:
-            name: "Staging adhoc manifest"
-            project-regex: adhoc-manifest$
-            default-repository: https://github.com/mozilla-releng/adhoc-manifest
-            default-ref: master
-            ssh-secret-name: project/adhoc/adhoc-github-clone-ssh
             type: git
         staging-adhoc-signing:
             # string: the name of the repo, for humans
