@@ -28,12 +28,15 @@ def define_signing_flags(config, tasks):
         if "run_on_tasks_for" in task["attributes"]:
             task.setdefault("run-on-tasks-for", task["attributes"]["run_on_tasks_for"])
 
+        # XXX: hack alert, we're taking a list and turning into a single item
+        format_ = "macapp" if "macapp" in task["attributes"]["manifest"]["signing-formats"] else ""
         for key in ("worker-type", "worker.signing-type"):
             resolve_keyed_by(
                 task,
                 key,
                 item_name=task["name"],
                 level=config.params["level"],
+                format=format_,
             )
         yield task
 
@@ -59,6 +62,12 @@ def build_signing_task(config, tasks):
                 "formats": manifest["signing-formats"],
             }
         ]
+        if "mac-behavior" in manifest:
+            task["worker"]["mac-behavior"] = manifest["mac-behavior"]
+        if "mac-entitlements-url" in manifest:
+            task["worker"]["entitlements-url"] = manifest["mac-entitlements-url"]
+        if "product" in manifest:
+            task["worker"]["product"] = manifest["product"]
         task.setdefault("label", "{}-{}".format(config.kind, manifest_name))
         task.setdefault("extra", {})["manifest-name"] = manifest_name
         del task["primary-dependency"]
