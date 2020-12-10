@@ -6,7 +6,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 
 from six import text_type
 
-from voluptuous import Required
+from voluptuous import Any, Optional, Required
 
 from taskgraph.util.schema import taskref_or_string
 from taskgraph.util import path as mozpath
@@ -32,6 +32,14 @@ from taskgraph.transforms.task import payload_builder
                 Required("formats"): [text_type],
             }
         ],
+        # behavior for mac iscript
+        Optional("mac-behavior"): Any(
+            # Adhoc signing doesn't have enough contention to warrant
+            # splitting this into part 1 & part 3
+            "mac_notarize",
+        ),
+        Optional("product"): text_type,
+        Optional("entitlements-url"): text_type,
     },
 )
 def build_scriptworker_signing_payload(config, task, task_def):
@@ -43,6 +51,12 @@ def build_scriptworker_signing_payload(config, task, task_def):
         "maxRunTime": worker["max-run-time"],
         "upstreamArtifacts": worker["upstream-artifacts"],
     }
+    if worker.get("mac-behavior"):
+        task_def["payload"]["behavior"] = worker["mac-behavior"]
+        if worker.get("product"):
+            task_def["payload"]["product"] = worker["product"]
+        if worker.get("entitlements-url"):
+            task_def["payload"]["entitlements-url"] = worker["entitlements-url"]
 
     formats = set()
     for artifacts in worker["upstream-artifacts"]:

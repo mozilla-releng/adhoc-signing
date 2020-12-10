@@ -10,26 +10,11 @@ task-priority: high
 taskgraph:
     register: adhoc_taskgraph:register
     repositories:
-        # This is the manifest repo
-        adhoc-manifest:
-            name: "Adhoc manifest"
-            project-regex: adhoc-manifest$
-            default-repository: https://github.com/mozilla-releng/adhoc-manifest
-            default-ref: master
-            ssh-secret-name: project/adhoc/adhoc-github-clone-ssh
-            type: git
         adhoc-signing:
             name: "Adhoc Signing"
             project-regex: adhoc-signing$
             default-repository: https://github.com/mozilla-releng/adhoc-signing
             default-ref: master
-            type: git
-        staging-adhoc-manifest:
-            name: "Staging adhoc manifest"
-            project-regex: adhoc-manifest$
-            default-repository: https://github.com/mozilla-releng/adhoc-manifest
-            default-ref: master
-            ssh-secret-name: project/adhoc/adhoc-github-clone-ssh
             type: git
         staging-adhoc-signing:
             # string: the name of the repo, for humans
@@ -65,6 +50,16 @@ workers:
                 by-level:
                     "3": adhoc-3-signing
                     default: adhoc-t-signing
+        mac-signing:
+            provisioner: scriptworker-prov-v1
+            implementation: scriptworker-signing
+            os: macosx
+            # We don't need a separate worker type
+            # for level 1 because RelEng are the only
+            # people who can pick off signing requests.
+            # This means that there's no security benefit
+            # to separating the level 1 / level 3 workers.
+            worker-type: adhoc-3-mac-signing
         shipit:
             provisioner: scriptworker-k8s
             implementation: scriptworker-shipit

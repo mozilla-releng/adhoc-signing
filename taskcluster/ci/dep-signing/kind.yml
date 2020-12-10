@@ -18,7 +18,10 @@ job-template:
         code-review: true
     index:
         type: dep-signing
-    worker-type: dep-signing
+    worker-type:
+        by-format:
+            macapp: mac-signing
+            default: dep-signing
     worker:
         signing-type: dep-signing
         max-run-time: 3600

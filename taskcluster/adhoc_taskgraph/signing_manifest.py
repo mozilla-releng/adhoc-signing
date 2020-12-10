@@ -32,6 +32,7 @@ SUPPORTED_SIGNING_FORMATS = (
     "autograph_authenticode",
     "autograph_authenticode_stub",
     "autograph_hash_only_mar384",
+    "macapp",
 )
 
 
@@ -57,6 +58,9 @@ base_schema = Schema(
             }
         ),
         Required("manifest_name"): basestring,
+        Optional("mac-behavior"): text_type,
+        Optional("product"): text_type,
+        Optional("mac-entitlements-url"): text_type,
     }
 )
 
