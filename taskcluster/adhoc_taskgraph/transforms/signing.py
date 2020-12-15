@@ -66,6 +66,8 @@ def build_signing_task(config, tasks):
             task["worker"]["mac-behavior"] = manifest["mac-behavior"]
         if "mac-entitlements-url" in manifest:
             task["worker"]["entitlements-url"] = manifest["mac-entitlements-url"]
+        if "mac-provisioning-profile-url" in manifest:
+            task["worker"]["provisioning-profile-url"] = manifest["mac-provisioning-profile-url"]
         if "product" in manifest:
             task["worker"]["product"] = manifest["product"]
         task.setdefault("label", "{}-{}".format(config.kind, manifest_name))
