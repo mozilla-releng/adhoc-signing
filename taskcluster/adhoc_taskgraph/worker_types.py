@@ -40,6 +40,7 @@ from taskgraph.transforms.task import payload_builder
         ),
         Optional("product"): text_type,
         Optional("entitlements-url"): text_type,
+        Optional("provisioning-profile-url"): text_type,
     },
 )
 def build_scriptworker_signing_payload(config, task, task_def):
@@ -57,6 +58,8 @@ def build_scriptworker_signing_payload(config, task, task_def):
             task_def["payload"]["product"] = worker["product"]
         if worker.get("entitlements-url"):
             task_def["payload"]["entitlements-url"] = worker["entitlements-url"]
+        if worker.get("provisioning-profile-url"):
+            task_def["payload"]["provisioning-profile-url"] = worker["provisioning-profile-url"]
 
     formats = set()
     for artifacts in worker["upstream-artifacts"]:

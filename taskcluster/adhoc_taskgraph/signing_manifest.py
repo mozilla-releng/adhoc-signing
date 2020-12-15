@@ -61,6 +61,7 @@ base_schema = Schema(
         Optional("mac-behavior"): text_type,
         Optional("product"): text_type,
         Optional("mac-entitlements-url"): text_type,
+        Optional("mac-provisioning-profile"): text_type,
     }
 )
 
