@@ -31,6 +31,8 @@ SUPPORTED_SIGNING_FORMATS = (
     "autograph_gpg",
     "autograph_authenticode",
     "autograph_authenticode_stub",
+    "autograph_authenticode_sha2",
+    "autograph_authenticode_sha2_stub",
     "autograph_hash_only_mar384",
     "macapp",
 )
