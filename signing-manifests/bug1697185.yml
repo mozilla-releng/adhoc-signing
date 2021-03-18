@@ -1,0 +1,12 @@
+---
+bug: 1697185
+sha256: f3a802d3a61e6a35b02d861054247a463ecbbd4ac5352f74beff676cb07d740e
+filesize: 312886
+private-artifact: false
+signing-formats: ["autograph_authenticode_sha2_stub"]
+requestor: Aki Sasaki
+reason: Test sha2 stub installer signing
+artifact-name: target.stub-installer.exe
+fetch:
+    type: static-url
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/NR6y3eMuSdKgTKeJSkO23Q/runs/0/artifacts/public/build/target.stub-installer.exe
