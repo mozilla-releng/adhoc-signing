@@ -1,0 +1,12 @@
+---
+bug: 123456789
+sha256: dc6e3c99971dad1b785a77d3d3da5da17b592bc51e0f0481a3e820eaadeaabb7
+filesize: 22383210
+private-artifact: true
+signing-formats: ["autograph_authenticode"]
+requestor: Ben Hearsum <bhearsum@mozilla.com>
+reason: mozilla vpn 2.0 windows internal signing - verifying that it works DO NOT SHIP FROM HEARSUM.CA
+artifact-name: unsigned.zip
+fetch:
+    type: static-url
+    url: https://hearsum.ca/~bhearsum/unsigned.zip
