@@ -1,7 +1,7 @@
 ---
 bug: 123456789
-sha256: 1727ad43e8d8257900708f3d21e6ef98c09f1bbd7931419f1552a8f5a8a92b00
-filesize: 22402015
+sha256: a223d77c1fc07506e2403ac2b6beb6fd055b739dfd0cc6abc527cd77a3dfe745
+filesize: 18116608
 private-artifact: false
 signing-formats: ["autograph_authenticode"]
 requestor: Ben Hearsum <bhearsum@mozilla.com>
@@ -9,4 +9,4 @@ reason: vpn signing
 artifact-name: MozillaVPN-signed.msi
 fetch:
     type: static-url
-    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/KIqH6zw9QCWu7CxVjUQDAQ/runs/0/artifacts/public%2Fbuild%2Fsigned-internals.zip
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/ByShA_xJQdurE5C3Q9ZHWQ/runs/0/artifacts/public%2Fwindows%2Finstaller%2FMozillaVPN.msi
