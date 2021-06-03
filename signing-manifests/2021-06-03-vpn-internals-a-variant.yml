@@ -1,0 +1,12 @@
+---
+bug: 123456789
+sha256: 9926ccc34317934d809f474e95492d87b68fd94e39c8de94eaa0f03da35b4950
+filesize: 21560391
+private-artifact: false
+signing-formats: ["autograph_authenticode"]
+requestor: Ben Hearsum <bhearsum@mozilla.com>
+reason: sign windows vpn build
+artifact-name: signed-internals-a.zip
+fetch:
+    type: static-url
+    url: https://raw.githubusercontent.com/mozilla-releng/adhoc-signing/master/files/test_A_windows.zip
