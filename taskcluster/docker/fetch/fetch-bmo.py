@@ -97,7 +97,7 @@ def retrier(attempts=5, sleeptime=10, max_sleeptime=300, sleepscale=1.5, jitter=
     jitter = jitter or 0  # py35 barfs on the next line if jitter is None
     if jitter > sleeptime:
         # To prevent negative sleep times
-        raise Exception('jitter ({}) must be less than sleep time ({})'.format(jitter, sleeptime))
+        raise Exception(f'jitter ({jitter}) must be less than sleep time ({sleeptime})')
 
     sleeptime_real = sleeptime
     for _ in range(attempts):
@@ -173,7 +173,7 @@ def stream_download(url, sha256=None, size=None):
         if digest == sha256:
             log('Verified sha256 integrity of %s' % url)
         else:
-            raise IntegrityError('sha256 mismatch on %s: wanted %s; got %s' % (
+            raise IntegrityError('sha256 mismatch on {}: wanted {}; got {}'.format(
                 url, sha256, digest))
 
 
@@ -190,7 +190,7 @@ def download_to_path(url, path, sha256=None, size=None):
 
     for _ in retrier(attempts=5, sleeptime=60):
         try:
-            log('Downloading %s to %s' % (url, path))
+            log(f'Downloading {url} to {path}')
 
             with rename_after_close(path, 'wb') as fh:
                 for chunk in stream_download(url, sha256=sha256, size=size):
@@ -200,7 +200,7 @@ def download_to_path(url, path, sha256=None, size=None):
         except IntegrityError:
             raise
         except Exception as e:
-            log("Download failed: {}".format(e))
+            log(f"Download failed: {e}")
             continue
 
     raise Exception("Download failed, no more retries!")
@@ -211,7 +211,7 @@ def command_bmo_fetch(args):
     dest = pathlib.Path(args.dest)
     dest.parent.mkdir(parents=True, exist_ok=True)
 
-    url = "https://bugzilla.mozilla.org/attachment.cgi?id={}".format(args.attachment_id)
+    url = f"https://bugzilla.mozilla.org/attachment.cgi?id={args.attachment_id}"
 
     try:
         download_to_path(url, dest, sha256=args.sha256, size=args.size)

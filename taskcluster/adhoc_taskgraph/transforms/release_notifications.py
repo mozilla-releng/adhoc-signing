@@ -5,7 +5,6 @@
 Add notifications via taskcluster-notify for release tasks
 """
 
-from __future__ import absolute_import, print_function, unicode_literals
 
 from taskgraph.transforms.base import TransformSequence
 from taskgraph.util.keyed_by import evaluate_keyed_by
@@ -44,7 +43,7 @@ def add_notifications(config, jobs):
         # We only send mail on success to avoid messages like 'blah is in the
         # candidates dir' when cancelling graphs, dummy job failure, etc
         job.setdefault('routes', []).extend(
-            ['notify.email.{}.on-completed'.format(email) for email in emails]
+            [f'notify.email.{email}.on-completed' for email in emails]
         )
 
         job.setdefault('extra', {}).update(

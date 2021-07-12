@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from __future__ import absolute_import, print_function, unicode_literals
 
 from taskgraph.actions.registry import register_callback_action
 
@@ -62,7 +59,7 @@ def is_release_promotion_available(parameters):
                 'default': 'FILLMEIN',
                 'description': 'The adhoc manifest to sign.',
                 'enum': sorted(
-                    [manifest_name for manifest_name in ADHOC_MANIFEST.keys()]
+                    manifest_name for manifest_name in ADHOC_MANIFEST.keys()
                 ),
             },
             'revision': {
