@@ -5,7 +5,6 @@
 Create signing tasks.
 """
 
-from __future__ import absolute_import, print_function, unicode_literals
 
 from taskgraph.transforms.base import TransformSequence
 from taskgraph.util.schema import resolve_keyed_by
@@ -50,7 +49,7 @@ def build_signing_task(config, tasks):
         if not artifact_prefix.startswith("public"):
             scopes = task.setdefault('scopes', [])
             scopes.append(
-                "queue:get-artifact:{}/*".format(artifact_prefix)
+                f"queue:get-artifact:{artifact_prefix}/*"
             )
         manifest_name = dep.label.replace("fetch-", "")
         manifest = dep.attributes['manifest']
@@ -70,7 +69,7 @@ def build_signing_task(config, tasks):
             task["worker"]["provisioning-profile-url"] = manifest["mac-provisioning-profile-url"]
         if "product" in manifest:
             task["worker"]["product"] = manifest["product"]
-        task.setdefault("label", "{}-{}".format(config.kind, manifest_name))
+        task.setdefault("label", f"{config.kind}-{manifest_name}")
         task.setdefault("extra", {})["manifest-name"] = manifest_name
         del task["primary-dependency"]
         yield task

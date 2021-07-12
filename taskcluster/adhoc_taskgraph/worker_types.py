@@ -2,7 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from __future__ import absolute_import, print_function, unicode_literals
 
 from six import text_type
 
@@ -18,18 +17,18 @@ from taskgraph.transforms.task import payload_builder
     schema={
         # the maximum time to run, in seconds
         Required("max-run-time"): int,
-        Required("signing-type"): text_type,
+        Required("signing-type"): str,
         # list of artifact URLs for the artifacts that should be signed
         Required("upstream-artifacts"): [
             {
                 # taskId of the task with the artifact
                 Required("taskId"): taskref_or_string,
                 # type of signing task (for CoT)
-                Required("taskType"): text_type,
+                Required("taskType"): str,
                 # Paths to the artifacts to sign
-                Required("paths"): [text_type],
+                Required("paths"): [str],
                 # Signing formats to use on each of the paths
-                Required("formats"): [text_type],
+                Required("formats"): [str],
             }
         ],
         # behavior for mac iscript
@@ -38,9 +37,9 @@ from taskgraph.transforms.task import payload_builder
             # splitting this into part 1 & part 3
             "mac_notarize",
         ),
-        Optional("product"): text_type,
-        Optional("entitlements-url"): text_type,
-        Optional("provisioning-profile-url"): text_type,
+        Optional("product"): str,
+        Optional("entitlements-url"): str,
+        Optional("provisioning-profile-url"): str,
     },
 )
 def build_scriptworker_signing_payload(config, task, task_def):
@@ -67,7 +66,7 @@ def build_scriptworker_signing_payload(config, task, task_def):
         for path in artifacts['paths']:
             if not path.startswith('public/'):
                 dirname = mozpath.dirname(path)
-                scope = 'queue:get-artifact:{}/*'.format(dirname)
+                scope = f'queue:get-artifact:{dirname}/*'
                 if scope not in task_def.setdefault('scopes', []):
                     task_def['scopes'].append(scope)
 
@@ -80,7 +79,7 @@ def build_scriptworker_signing_payload(config, task, task_def):
 @payload_builder(
     "shipit-shipped",
     schema={
-        Required("release-name"): text_type,
+        Required("release-name"): str,
     },
 )
 def build_push_apk_payload(config, task, task_def):

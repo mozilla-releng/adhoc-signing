@@ -2,7 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from __future__ import absolute_import, print_function, unicode_literals
 
 from six import text_type
 
@@ -15,16 +14,16 @@ from taskgraph.transforms.fetch import fetch_builder
 
 @fetch_builder('bmo-attachment', schema={
     # The URL to download.
-    Required('attachment-id'): text_type,
+    Required('attachment-id'): str,
 
     # The SHA-256 of the downloaded content.
-    Required('sha256'): text_type,
+    Required('sha256'): str,
 
     # Size of the downloaded entity, in bytes.
     Required('size'): int,
 
     # The name to give to the generated artifact.
-    Required('artifact-name'): text_type,
+    Required('artifact-name'): str,
 
 })
 def create_fetch_url_task(config, name, fetch):
@@ -52,7 +51,7 @@ def create_fetch_url_task(config, name, fetch):
     cmd = [
         'bash',
         '-c',
-        '/usr/local/bin/fetch-bmo.py {}'.format(args)
+        f'/usr/local/bin/fetch-bmo.py {args}'
     ]
 
     return {
