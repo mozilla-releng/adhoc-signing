@@ -25,7 +25,7 @@ def from_manifests(config, jobs):
             if manifest['fetch'].get('gpg-signature'):
                 fetch['gpg-signature'] = manifest['fetch'].get('gpg-signature')
         elif fetch['type'] == 'bmo-attachment':
-            fetch['attachment-id'] = unicode(manifest["fetch"]['attachment-id'])
+            fetch['attachment-id'] = str(manifest["fetch"]['attachment-id'])
         fetch["sha256"] = manifest["sha256"]
         fetch["size"] = manifest["filesize"]
 
