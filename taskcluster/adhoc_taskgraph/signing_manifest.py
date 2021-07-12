@@ -45,21 +45,21 @@ base_schema = Schema(
         Required("filesize"): int,
         Required("private-artifact"): bool,
         Required("signing-formats"): [Any(*SUPPORTED_SIGNING_FORMATS)],
-        Required("requestor"): basestring,
-        Required("reason"): basestring,
-        Required("artifact-name"): basestring,
+        Required("requestor"): str,
+        Required("reason"): str,
+        Required("artifact-name"): str,
         Required("fetch"): Any(
             {
-                Optional("gpg-signature"): basestring,
+                Optional("gpg-signature"): str,
                 Optional('type'): 'static-url',
-                Required('url'): basestring,
+                Required('url'): str,
             },
             {
                 Required('type'): 'bmo-attachment',
-                Required('attachment-id'): Any(basestring, int)
+                Required('attachment-id'): Any(str, int)
             }
         ),
-        Required("manifest_name"): basestring,
+        Required("manifest_name"): str,
         Optional("mac-behavior"): text_type,
         Optional("product"): text_type,
         Optional("mac-entitlements-url"): text_type,

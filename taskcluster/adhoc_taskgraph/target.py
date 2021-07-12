@@ -19,4 +19,4 @@ def target_tasks_promote_xpi(full_task_graph, parameters, graph_config):
         if manifest_name and manifest_name == parameters["adhoc_name"]:
             return True
 
-    return [l for l, t in full_task_graph.tasks.iteritems() if filter(t, parameters)]
+    return [l for l, t in full_task_graph.tasks.items() if filter(t, parameters)]
