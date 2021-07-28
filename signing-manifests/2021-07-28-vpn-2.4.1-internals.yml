@@ -1,0 +1,12 @@
+---
+bug: 123456789
+sha256: 3c089d17c115c1c1f3886240f24cdc196ca2b5ca9fd43fe14956af6466872ead
+filesize: 23768101
+private-artifact: false
+signing-formats: ["autograph_authenticode"]
+requestor: Ben Hearsum <ben@mozilla.com>
+reason: sign windows vpn build
+artifact-name: signed-internals.zip
+fetch:
+    type: static-url
+    url: https://raw.githubusercontent.com/mozilla-releng/adhoc-signing/master/files/mozillavpn-unsigned-2021-07-28.zip
