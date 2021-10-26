@@ -1,0 +1,12 @@
+---
+bug: 1737802
+sha256: 52be494ab856a0be5aa84df03797bb51af6f6ef9a881502f9c2b5a6bf1207b2b
+filesize: 688
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+requestor: Julien Cristau <jcristau@mozilla.com>
+reason: switching mar channel for pine
+artifact-name: target.mar
+fetch:
+  type: bmo-attachment
+  attachment-id: 9247763
