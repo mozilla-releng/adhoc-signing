@@ -14,7 +14,6 @@ from six import text_type
 
 from taskgraph.config import load_graph_config
 from taskgraph.util.schema import validate_schema
-from taskgraph.util.vcs import calculate_head_rev, get_repo_path, get_repository_type
 from taskgraph.util import yaml
 from taskgraph.util.memoize import memoize
 from taskgraph.util.readonlydict import ReadOnlyDict
@@ -34,6 +33,11 @@ SUPPORTED_SIGNING_FORMATS = (
     "macapp",
 )
 
+SUPPORTED_SIGNING_CERTS = (
+    "dep-signing",
+    "nightly-signing",
+    "release-signing",
+)
 
 base_schema = Schema(
     {
@@ -42,6 +46,7 @@ base_schema = Schema(
         Required("filesize"): int,
         Required("private-artifact"): bool,
         Required("signing-formats"): [Any(*SUPPORTED_SIGNING_FORMATS)],
+        Optional("signing-cert"): Any(*SUPPORTED_SIGNING_CERTS),
         Required("requestor"): str,
         Required("reason"): str,
         Required("artifact-name"): str,

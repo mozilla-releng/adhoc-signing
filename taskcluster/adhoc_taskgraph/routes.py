@@ -43,3 +43,8 @@ def add_dep_signing_indexes(config, task):
 @index_builder("release-signing")
 def add_release_signing_indexes(config, task):
     return add_signing_indexes(config, task, "release-signing")
+
+
+@index_builder("nightly-signing")
+def add_nightly_signing_indexes(config, task):
+    return add_signing_indexes(config, task, "nightly-signing")
