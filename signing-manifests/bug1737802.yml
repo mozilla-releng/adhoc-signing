@@ -4,6 +4,7 @@ sha256: 52be494ab856a0be5aa84df03797bb51af6f6ef9a881502f9c2b5a6bf1207b2b
 filesize: 688
 private-artifact: false
 signing-formats: ["autograph_hash_only_mar384"]
+signing-cert: nightly-signing
 requestor: Julien Cristau <jcristau@mozilla.com>
 reason: switching mar channel for pine
 artifact-name: target.mar
