@@ -29,7 +29,7 @@ def define_signing_flags(config, tasks):
 
         # XXX: hack alert, we're taking a list and turning into a single item
         format_ = "macapp" if "macapp" in task["attributes"]["manifest"]["signing-formats"] else ""
-        for key in ("worker-type", "worker.signing-type"):
+        for key in ("worker-type", "worker.signing-type", "index.type"):
             resolve_keyed_by(
                 task,
                 key,
@@ -38,6 +38,15 @@ def define_signing_flags(config, tasks):
                 format=format_,
             )
         yield task
+
+
+def get_signing_cert(manifest, level):
+    if level != "3":
+        signing_cert = "dep-signing"
+    else:
+        signing_cert = manifest.get("signing-cert", "release-signing")
+        assert signing_cert in ("nightly-signing", "release-signing")
+    return signing_cert
 
 
 @transforms.add
@@ -53,6 +62,7 @@ def build_signing_task(config, tasks):
             )
         manifest_name = dep.label.replace("fetch-", "")
         manifest = dep.attributes['manifest']
+        signing_cert = get_signing_cert(manifest, config.params["level"])
         task["worker"]["upstream-artifacts"] = [
             {
                 "taskId": {"task-reference": "<fetch>"},
@@ -71,6 +81,8 @@ def build_signing_task(config, tasks):
             task["worker"]["product"] = manifest["product"]
         task.setdefault("label", f"{config.kind}-{manifest_name}")
         task.setdefault("extra", {})["manifest-name"] = manifest_name
+        task["index"]["type"] = task["index"]["type"].format(signing_cert=signing_cert)
+        task["worker"]["signing-type"] = task["worker"]["signing-type"].format(signing_cert=signing_cert)
         del task["primary-dependency"]
         yield task
 

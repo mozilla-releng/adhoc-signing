@@ -16,7 +16,10 @@ transforms:
 job-template:
     description: Release-signing
     index:
-        type: release-signing
+        type:
+            by-level:
+                '3': "{signing_cert}"
+                default: dep-signing
     attributes:
         shipping-phase: promote
     run-on-tasks-for: [action]
@@ -30,7 +33,7 @@ job-template:
     worker:
         signing-type:
             by-level:
-                '3': release-signing
+                '3': "{signing_cert}"
                 default: dep-signing
         max-run-time: 3600
     notifications:
