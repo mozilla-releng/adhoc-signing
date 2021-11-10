@@ -1,0 +1,12 @@
+---
+bug: 1740532
+sha256: 90bb71478b418faa1b8958ab28582302e25f7c9099b377166b30360185c62482
+filesize: 121418375
+private-artifact: false
+signing-formats: ["autograph_authenticode_sha2"]
+requestor: Mitchell Hentges <mhentges@mozilla.com>
+reason: MozillaBuild 3.4 release
+artifact-name: MozillaBuildSetup3.4.exe
+fetch:
+    type: static-url
+    url: https://media.githubusercontent.com/media/mozilla-releng/adhoc-signing/master/files/MozillaBuildSetup3.4.exe
