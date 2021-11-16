@@ -1,7 +1,7 @@
 ---
 bug: 1740532
-sha256: 90bb71478b418faa1b8958ab28582302e25f7c9099b377166b30360185c62482
-filesize: 121418375
+sha256: 1b2086a106ed850760d42c96eb4bbdd48dc013a6f135285f0946f30eab4c0df6
+filesize: 123131269
 private-artifact: false
 signing-formats: ["autograph_authenticode_sha2"]
 requestor: Mitchell Hentges <mhentges@mozilla.com>
