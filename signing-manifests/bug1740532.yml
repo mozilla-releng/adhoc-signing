@@ -9,4 +9,4 @@ reason: MozillaBuild 3.4 release
 artifact-name: MozillaBuildSetup3.4.exe
 fetch:
     type: static-url
-    url: https://drive.google.com/file/d/1XWHvKlCkp-1-pSena9ITsspeExoMM4HH/view?usp=sharing
+    url: https://fuzzlesoft.ca/MozillaBuildSetup3.4.exe
