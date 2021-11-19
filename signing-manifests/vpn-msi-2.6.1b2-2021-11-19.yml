@@ -1,6 +1,6 @@
 ---
 bug: 123456789
-sha256: f3ee5b2b04ece7ab77d25121b4aca285ce74896d6a075acd73ae3b39dacaf7c5
+sha256: a8841a925d07deccd0c553797536424691edb9d72c002b3601b4dcbd17173d7e
 filesize: 20684800
 private-artifact: false
 signing-formats: ["autograph_authenticode"]
