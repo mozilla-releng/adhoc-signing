@@ -74,12 +74,6 @@ def build_scriptworker_signing_payload(config, task, task_def):
                 if scope not in task_def.setdefault("scopes", []):
                     task_def["scopes"].append(scope)
 
-    resolve_keyed_by(
-        config.graph_config["scriptworker"],
-        "scope-prefix",
-        item_name="scriptworker.scope-prefix",
-        product=worker.get("product", ""),
-    )
     scope_prefix = config.graph_config["scriptworker"]["scope-prefix"]
     task_def["scopes"].append(
         "{}:signing:cert:{}".format(scope_prefix, worker["signing-type"])

@@ -82,7 +82,4 @@ release-promotion:
 private-artifact-prefix: releng/adhoc
 
 scriptworker:
-    scope-prefix:
-        by-product:
-            mozillavpn: project:releng:signing
-            default: project:adhoc:releng
+    scope-prefix: project:adhoc:releng
