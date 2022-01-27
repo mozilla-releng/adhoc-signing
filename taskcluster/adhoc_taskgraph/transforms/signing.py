@@ -9,7 +9,6 @@ Create signing tasks.
 from taskgraph.transforms.base import TransformSequence
 from taskgraph.util.schema import resolve_keyed_by
 
-
 transforms = TransformSequence()
 
 
@@ -28,7 +27,10 @@ def define_signing_flags(config, tasks):
             task.setdefault("run-on-tasks-for", task["attributes"]["run_on_tasks_for"])
 
         # XXX: hack alert, we're taking a list and turning into a single item
-        format_ = "macapp" if "macapp" in task["attributes"]["manifest"]["signing-formats"] else ""
+        format_ = ""
+        if "macapp" in task["attributes"]["manifest"]["signing-formats"]:
+            format_ = "macapp"
+
         for key in ("worker-type", "worker.signing-type", "index.type"):
             resolve_keyed_by(
                 task,
@@ -54,38 +56,47 @@ def build_signing_task(config, tasks):
     for task in tasks:
         dep = task["primary-dependency"]
         task["dependencies"] = {"fetch": dep.label}
-        artifact_prefix = task["attributes"].get("artifact_prefix", "public").rstrip('/')
+        artifact_prefix = (
+            task["attributes"].get("artifact_prefix", "public").rstrip("/")
+        )
         if not artifact_prefix.startswith("public"):
-            scopes = task.setdefault('scopes', [])
-            scopes.append(
-                f"queue:get-artifact:{artifact_prefix}/*"
-            )
+            scopes = task.setdefault("scopes", [])
+            scopes.append(f"queue:get-artifact:{artifact_prefix}/*")
         manifest_name = dep.label.replace("fetch-", "")
-        manifest = dep.attributes['manifest']
+        manifest = dep.attributes["manifest"]
         signing_cert = get_signing_cert(manifest, config.params["level"])
         task["worker"]["upstream-artifacts"] = [
             {
                 "taskId": {"task-reference": "<fetch>"},
                 "taskType": "build",
-                "paths": [dep.attributes['fetch-artifact']],
+                "paths": [dep.attributes["fetch-artifact"]],
                 "formats": manifest["signing-formats"],
             }
         ]
-        if "mac-behavior" in manifest:
-            task["worker"]["mac-behavior"] = manifest["mac-behavior"]
-        if "mac-entitlements-url" in manifest:
-            task["worker"]["entitlements-url"] = manifest["mac-entitlements-url"]
-        if "mac-provisioning-profile-url" in manifest:
-            task["worker"]["provisioning-profile-url"] = manifest["mac-provisioning-profile-url"]
-        if "product" in manifest:
-            task["worker"]["product"] = manifest["product"]
+        # Optional keys
+        for task_key, manifest_key in (
+            ("behavior", "mac-behavior"),
+            ("entitlements-url", "mac-entitlements-url"),
+            ("loginitems-entitlements-url", "mac-loginitems-entitlements-url"),
+            (
+                "nativemessaging-entitlements-url",
+                "mac-nativemessaging-entitlements-url",
+            ),
+            ("provisioning-profile-url", "mac-provisioning-profile-url"),
+            ("product", "product"),
+        ):
+            if manifest_key in manifest:
+                task["worker"][task_key] = manifest[manifest_key]
+
         task.setdefault("label", f"{config.kind}-{manifest_name}")
         task.setdefault("extra", {})["manifest-name"] = manifest_name
         task["index"]["type"] = task["index"]["type"].format(signing_cert=signing_cert)
-        task["worker"]["signing-type"] = task["worker"]["signing-type"].format(signing_cert=signing_cert)
+        task["worker"]["signing-type"] = task["worker"]["signing-type"].format(
+            signing_cert=signing_cert
+        )
         del task["primary-dependency"]
         yield task
 
 
 def _get_dependent_job_name_without_its_kind(dependent_job):
-    return dependent_job.label[len(dependent_job.kind) + 1:]
+    return dependent_job.label[len(dependent_job.kind) + 1 :]
