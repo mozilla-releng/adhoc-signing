@@ -1,0 +1,3 @@
+# taskgraph test-action-callback creates these:
+artifacts/
+docker-contexts/

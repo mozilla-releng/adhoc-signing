@@ -73,20 +73,10 @@ def build_signing_task(config, tasks):
                 "formats": manifest["signing-formats"],
             }
         ]
-        # Optional keys
-        for task_key, manifest_key in (
-            ("behavior", "mac-behavior"),
-            ("entitlements-url", "mac-entitlements-url"),
-            ("loginitems-entitlements-url", "mac-loginitems-entitlements-url"),
-            (
-                "nativemessaging-entitlements-url",
-                "mac-nativemessaging-entitlements-url",
-            ),
-            ("provisioning-profile-url", "mac-provisioning-profile-url"),
-            ("product", "product"),
-        ):
-            if manifest_key in manifest:
-                task["worker"][task_key] = manifest[manifest_key]
+        # Optional keys (will be validated by worker-type schema)
+        for key in ("mac-behavior", "product"):
+            if key in manifest:
+                task["worker"][key] = manifest[key]
 
         task.setdefault("label", f"{config.kind}-{manifest_name}")
         task.setdefault("extra", {})["manifest-name"] = manifest_name

@@ -58,10 +58,6 @@ base_schema = Schema(
         Required("manifest_name"): str,
         Optional("mac-behavior"): str,
         Optional("product"): str,
-        Optional("mac-entitlements-url"): str,
-        Optional("mac-loginitems-entitlements-url"): str,
-        Optional("mac-nativemessaging-entitlements-url"): str,
-        Optional("mac-provisioning-profile"): str,
     }
 )
 
@@ -72,11 +68,12 @@ def check_manifest(manifest):
     # XXX url is a reachable url?
     # XXX bug exists in bugzilla?
     # XXX formats are known and valid for artifact-name
-    if manifest.get("product") == "mozillavpn":
-        assert "mac-entitlements-url" in manifest
-        assert "mac-loginitems-entitlements-url" in manifest
-        assert "mac-nativemessaging-entitlements-url" in manifest
-    pass
+
+    # MozillaVPN can only be signed as mac_notarize_vpn
+    if manifest.get("mac-behavior", "") == "mac_notarize_vpn":
+        assert len(manifest["signing-formats"]) == 1
+        assert manifest["signing-formats"][0] == "macapp"
+        assert manifest["product"] == "mozillavpn"
 
 
 @memoize

@@ -52,7 +52,7 @@ workers:
                     default: adhoc-t-signing
         mac-signing:
             provisioner: scriptworker-prov-v1
-            implementation: scriptworker-signing
+            implementation: scriptworker-mac-signing
             os: macosx
             worker-type:
                 by-level:
