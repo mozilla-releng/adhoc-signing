@@ -6,7 +6,7 @@
 from taskgraph.transforms.task import payload_builder
 from taskgraph.util import path as mozpath
 from taskgraph.util.schema import taskref_or_string
-from adhoc_taskgraph.static_task_vars import STATIC_VARS_BY_PRODUCT
+from adhoc_taskgraph.static_task_vars import MAC_STATIC_VARS_BY_PRODUCT
 from voluptuous import Any, Optional, Required
 
 def _set_task_scopes(config, worker, task_def):
@@ -106,7 +106,7 @@ def build_push_apk_payload(config, task, task_def):
         Required("product"): str,
     },
 )
-def build_scriptworker_signing_payload(config, task, task_def):
+def build_scriptworker_mac_signing_payload(config, task, task_def):
     worker = task["worker"]
 
     task_def["tags"]["worker-implementation"] = "scriptworker"
@@ -119,8 +119,8 @@ def build_scriptworker_signing_payload(config, task, task_def):
     task_def["payload"]["behavior"] = worker["mac-behavior"]
     task_def["payload"]["product"] = worker["product"]
 
-    if worker["product"] in STATIC_VARS_BY_PRODUCT:
-        for key, value in STATIC_VARS_BY_PRODUCT[worker["product"]].items():
+    if worker["product"] in MAC_STATIC_VARS_BY_PRODUCT:
+        for key, value in MAC_STATIC_VARS_BY_PRODUCT[worker["product"]].items():
             task_def["payload"][key] = value
 
     _set_task_scopes(config, worker, task_def)

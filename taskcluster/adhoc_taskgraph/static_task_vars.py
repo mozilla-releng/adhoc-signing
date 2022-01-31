@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-STATIC_VARS_BY_PRODUCT = {
+# Used in build_scriptworker_mac_signing_payload
+MAC_STATIC_VARS_BY_PRODUCT = {
     # These variables will always be included in the task payload
     "mozillavpn": {
         # URLs used for Mac Notarization
