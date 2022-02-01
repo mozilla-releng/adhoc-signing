@@ -3,21 +3,15 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-from copy import deepcopy
 import glob
-import json
 import os
-import time
-from datetime import datetime
+from copy import deepcopy
 
-from six import text_type
-
-from taskgraph.config import load_graph_config
-from taskgraph.util.schema import validate_schema
 from taskgraph.util import yaml
 from taskgraph.util.memoize import memoize
 from taskgraph.util.readonlydict import ReadOnlyDict
-from voluptuous import ALLOW_EXTRA, Optional, Required, Schema, Any
+from taskgraph.util.schema import validate_schema
+from voluptuous import Any, Optional, Required, Schema
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 ROOT = os.path.join(BASE_DIR, "taskcluster", "ci")
@@ -53,19 +47,17 @@ base_schema = Schema(
         Required("fetch"): Any(
             {
                 Optional("gpg-signature"): str,
-                Optional('type'): 'static-url',
-                Required('url'): str,
+                Optional("type"): "static-url",
+                Required("url"): str,
             },
             {
-                Required('type'): 'bmo-attachment',
-                Required('attachment-id'): Any(str, int)
-            }
+                Required("type"): "bmo-attachment",
+                Required("attachment-id"): Any(str, int),
+            },
         ),
         Required("manifest_name"): str,
         Optional("mac-behavior"): str,
         Optional("product"): str,
-        Optional("mac-entitlements-url"): str,
-        Optional("mac-provisioning-profile"): str,
     }
 )
 
@@ -76,7 +68,12 @@ def check_manifest(manifest):
     # XXX url is a reachable url?
     # XXX bug exists in bugzilla?
     # XXX formats are known and valid for artifact-name
-    pass
+
+    # MozillaVPN can only be signed as mac_notarize_vpn
+    if manifest.get("mac-behavior", "") == "mac_notarize_vpn":
+        assert len(manifest["signing-formats"]) == 1
+        assert manifest["signing-formats"][0] == "macapp"
+        assert manifest["product"] == "mozillavpn"
 
 
 @memoize
