@@ -56,8 +56,8 @@ workers:
             os: macosx
             worker-type:
                 by-level:
-                    "3": adhoc-3-mac-signing
-                    default: adhoc-t-mac-signing
+                    "3": adhoc-3-signing-mac
+                    default: adhoc-t-signing-mac
         shipit:
             provisioner: scriptworker-k8s
             implementation: scriptworker-shipit
