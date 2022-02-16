@@ -9,4 +9,4 @@ reason: sign windows vpn build
 artifact-name: signed-internals.zip
 fetch:
     type: static-url
-    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/main/mozillavpn-unsigned-2022-02-16.zip
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/vpn/mozillavpn-unsigned-2022-02-16.zip
