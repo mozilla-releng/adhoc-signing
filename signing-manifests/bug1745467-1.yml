@@ -6,7 +6,7 @@ private-artifact: false
 signing-formats: ["autograph_authenticode_sha2_stub"]
 requestor: Geoff Brown <gbrown@mozilla.com>
 reason: Test sha2 stub installer signing again (like bug 1697185!)
-artifact-name: target.stub-installer.signed.exe
+artifact-name: target.stub-installer.exe
 fetch:
     type: static-url
     url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/GeWzXnD1SXGAW42-pKWDqw/runs/0/artifacts/public/build/target.stub-installer.exe
