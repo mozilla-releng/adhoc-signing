@@ -5,9 +5,6 @@ policy:
     pullRequests: collaborators
 tasks:
     - $let:
-          taskgraph:
-              branch: taskgraph
-              revision: 81f2a1a09e9b0fc1b6c66fd452e065440793c175
           trustDomain: adhoc
       in:
           $let:
@@ -184,12 +181,9 @@ tasks:
                                     ADHOC_HEAD_REPOSITORY: '${repoUrl}'
                                     ADHOC_HEAD_REF: '${head_branch}'
                                     ADHOC_HEAD_REV: '${head_sha}'
+                                    ADHOC_PIP_REQUIREMENTS: taskcluster/requirements.txt
                                     ADHOC_REPOSITORY_TYPE: git
-                                    TASKGRAPH_BASE_REPOSITORY: https://hg.mozilla.org/ci/taskgraph
-                                    TASKGRAPH_HEAD_REPOSITORY: https://hg.mozilla.org/ci/${taskgraph.branch}
-                                    TASKGRAPH_HEAD_REV: '${taskgraph.revision}'
-                                    TASKGRAPH_REPOSITORY_TYPE: hg
-                                    REPOSITORIES: {$json: {adhoc: "Adhoc Manifest", taskgraph: "Taskgraph"}}
+                                    REPOSITORIES: {$json: {adhoc: "Adhoc Manifest"}}
                                     HG_STORE_PATH: /builds/worker/checkouts/hg-store
                                   - $if: 'tasks_for in ["github-pull-request"]'
                                     then:
@@ -205,13 +199,12 @@ tasks:
                               chainOfTrust: true
                           # Note: This task is built server side without the context or tooling that
                           # exist in tree so we must hard code the hash
-                          image: mozillareleases/taskgraph:decision-cf37a916268ac8d3fead0a9e4c8e1075328c98d65e0b93a9cfbafe7ea2d4ad83@sha256:ed00d6fa2e8265e165f0f842dba1448fee718b9cc3263cdea4f44cbe0e7b9431
+                          image: mozillareleases/taskgraph:decision-cf4b4b4baff57d84c1f9ec8fcd70c9839b70a7d66e6430a6c41ffe67252faa19@sha256:425e07f6813804483bc5a7258288a7684d182617ceeaa0176901ccc7702dfe28
                           maxRunTime: 1800
 
                           command:
                               - /usr/local/bin/run-task
                               - '--adhoc-checkout=/builds/worker/checkouts/src'
-                              - '--taskgraph-checkout=/builds/worker/checkouts/taskgraph'
                               - '--task-cwd=/builds/worker/checkouts/src'
                               - '--'
                               - bash
@@ -221,12 +214,10 @@ tasks:
                                 in:
                                     $if: 'tasks_for == "action"'
                                     then: >
-                                        PIP_IGNORE_INSTALLED=0 pip3 install --user /builds/worker/checkouts/taskgraph &&
                                         cd /builds/worker/checkouts/src &&
                                         ln -s /builds/worker/artifacts artifacts &&
                                         ~/.local/bin/taskgraph action-callback
                                     else: >
-                                        PIP_IGNORE_INSTALLED=0 pip3 install --user /builds/worker/checkouts/taskgraph &&
                                         ln -s /builds/worker/artifacts artifacts &&
                                         ~/.local/bin/taskgraph decision
                                         --pushlog-id='0'
