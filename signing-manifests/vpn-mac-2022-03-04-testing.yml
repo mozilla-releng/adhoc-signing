@@ -1,0 +1,14 @@
+---
+bug: 0000000
+sha256: 1e90009803e4c2dcd49125b8002c729b4a19475cd61b002d34aa830ec3de7761
+filesize: 20546508
+private-artifact: false
+signing-formats: ["macapp"]
+requestor: Heitor Neiva <hneiva@mozilla.com>
+reason: testing mozilla vpn mac signing
+product: mozillavpn
+artifact-name: MozillaVPN.zip
+mac-behavior: mac_notarize_vpn
+fetch:
+    type: static-url
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Kbx6kakSRrefFXnMXEGoUg/runs/0/artifacts/public%2Fbuild%2Funsigned.zip
