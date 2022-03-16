@@ -1,0 +1,12 @@
+---
+bug: 1759894
+sha256: f6593cb1c56547f207f14d69af5a0998412d971201e0bb0a2101df2b45ed18db
+filesize: 156260437
+private-artifact: false
+signing-formats: ["autograph_authenticode_sha2"]
+requestor: Mitchell Hentges <mhentges@mozilla.com>
+reason: MozillaBuild 4.0 release
+artifact-name: MozillaBuildSetup4.0.exe
+fetch:
+    type: static-url
+    url: https://fuzzlesoft.ca/MozillaBuildSetup4.0.exe
