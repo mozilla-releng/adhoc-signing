@@ -1,0 +1,12 @@
+---
+bug: 123456789
+sha256: fba5be02792a4d7381f79d7aca31bf491241a879618f8ff25c466a12a420853d
+filesize: 27167744
+private-artifact: false
+signing-formats: ["autograph_authenticode"]
+requestor: Andrew Halberstadt <ahal@mozilla.com>
+reason: mozillavpn Windows signing for 2.8.0
+artifact-name: signed-internals.zip
+fetch:
+    type: static-url
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/vpn/mozillavpn-unsigned-2022-04-07.zip
