@@ -1,0 +1,12 @@
+---
+bug: 1763427
+sha256: 6a4948d88ee074414f5f4e7bcfb778d4814e8341ca54925f7d604dc75e4a18ea
+filesize: 775441
+private-artifact: false
+signing-formats: ["autograph_authenticode_sha2_rfc3161_stub"]
+requestor: Geoff Brown <gbrown@mozilla.com>
+reason: Test sha2 stub installer with rfc3161 timestamp
+artifact-name: target.stub-installer.exe
+fetch:
+    type: static-url
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/HPY1rLUwQDS2vHyQ22ueUQ/runs/0/artifacts/public/build/setup.exe
