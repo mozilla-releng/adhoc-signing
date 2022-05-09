@@ -6,7 +6,7 @@ private-artifact: false
 signing-formats: ["autograph_authenticode_sha2_rfc3161_stub"]
 requestor: Geoff Brown <gbrown@mozilla.com>
 reason: Test sha2 stub installer with rfc3161 timestamp
-artifact-name: target.stub-installer.exe
+artifact-name: setup.exe
 fetch:
     type: static-url
     url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/HPY1rLUwQDS2vHyQ22ueUQ/runs/0/artifacts/public/build/setup.exe
