@@ -20,7 +20,7 @@ job-template:
         type: dep-signing
     worker-type:
         by-format:
-            macapp: mac-signing
+            mac.*: mac-signing
             default: dep-signing
     worker:
         signing-type: dep-signing

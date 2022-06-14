@@ -26,6 +26,7 @@ SUPPORTED_SIGNING_FORMATS = (
     "autograph_authenticode_sha2_rfc3161_stub",
     "autograph_hash_only_mar384",
     "macapp",
+    "mac_single_file",
 )
 
 SUPPORTED_SIGNING_CERTS = (
@@ -59,6 +60,7 @@ base_schema = Schema(
         Required("manifest_name"): str,
         Optional("mac-behavior"): str,
         Optional("product"): str,
+        Optional("single-file-globs"): [str],
     }
 )
 

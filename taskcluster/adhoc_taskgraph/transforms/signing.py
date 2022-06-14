@@ -28,8 +28,9 @@ def define_signing_flags(config, tasks):
 
         # XXX: hack alert, we're taking a list and turning into a single item
         format_ = ""
-        if "macapp" in task["attributes"]["manifest"]["signing-formats"]:
-            format_ = "macapp"
+        for f in ("macapp", "mac_single_file"):
+            if f in task["attributes"]["manifest"]["signing-formats"]:
+                format_ = f
 
         for key in ("worker-type", "worker.signing-type", "index.type"):
             resolve_keyed_by(
@@ -65,14 +66,20 @@ def build_signing_task(config, tasks):
         manifest_name = dep.label.replace("fetch-", "")
         manifest = dep.attributes["manifest"]
         signing_cert = get_signing_cert(manifest, config.params["level"])
-        task["worker"]["upstream-artifacts"] = [
-            {
-                "taskId": {"task-reference": "<fetch>"},
-                "taskType": "build",
-                "paths": [dep.attributes["fetch-artifact"]],
-                "formats": manifest["signing-formats"],
-            }
-        ]
+        upstream_artifact = {
+            "taskId": {"task-reference": "<fetch>"},
+            "taskType": "build",
+            "paths": [dep.attributes["fetch-artifact"]],
+            "formats": manifest["signing-formats"],
+        }
+        if "single-file-globs" in manifest:
+            if manifest.get("mac-behavior") != "mac_single_file":
+                raise Exception(
+                    "single-file-globs should only be specified for mac_single_file "
+                    "mac-behavior tasks!"
+                )
+            upstream_artifact["singleFileGlobs"] = manifest["single-file-globs"]
+        task["worker"]["upstream-artifacts"] = [upstream_artifact]
         # Optional keys (will be validated by worker-type schema)
         for key in ("mac-behavior", "product"):
             if key in manifest:
