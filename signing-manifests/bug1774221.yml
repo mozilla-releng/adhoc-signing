@@ -1,0 +1,15 @@
+---
+bug: 1774221
+sha256: ac6cdb77e49c420b7fd7a942813d75ad14513101693642127711b68c58fe931f
+filesize: 466258
+private-artifact: false
+signing-formats: ["mac_single_file"]
+requestor: Aki Sasaki <aki@mozilla.com>
+reason: signed dylib for mac openh264
+artifact-name: openh264-macos64-2e1774ab6dc6c43debb0b5b628bdf122a391d521.zip
+mac-behavior: mac_single_file
+product: firefox
+fetch:
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/5008f4fbfd531baba51b187834a14dd53c1320bf/openh264-macosx64-2e1774ab6dc6c43debb0b5b628bdf122a391d521.zip
+# Optional, only if mac-behavior is mac_single_file
+single-file-globs: ["libgmpopenh264.dylib"]
