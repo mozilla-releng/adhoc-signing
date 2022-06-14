@@ -94,6 +94,8 @@ def build_push_apk_payload(config, task, task_def):
                 Required("paths"): [str],
                 # Signing formats to use on each of the paths
                 Required("formats"): [str],
+                # used to find the file-to-sign in mac_single_file behavior
+                Optional("singleFileGlobs"): [str],
             }
         ],
         # behavior for mac iscript
@@ -102,7 +104,9 @@ def build_push_apk_payload(config, task, task_def):
             # splitting this into part 1 & part 3
             "mac_notarize",
             "mac_notarize_vpn",
+            "mac_single_file",
         ),
+        Optional("single-file-globs"): [str],
         Required("product"): str,
     },
 )
