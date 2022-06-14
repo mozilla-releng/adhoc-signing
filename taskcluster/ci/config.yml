@@ -14,7 +14,7 @@ taskgraph:
             name: "Adhoc Signing"
             project-regex: adhoc-signing$
             default-repository: https://github.com/mozilla-releng/adhoc-signing
-            default-ref: master
+            default-ref: main
             type: git
         staging-adhoc-signing:
             # string: the name of the repo, for humans
