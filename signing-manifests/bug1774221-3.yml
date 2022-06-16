@@ -1,0 +1,12 @@
+---
+bug: 1774221
+sha256: b36e091ad9c4b3cd315b6bee0110c706b8f54a7b2bdf9ca292c6431e19fdb6c3
+filesize: 395414
+private-artifact: false
+signing-formats: ["autograph_gpg"]
+requestor: Aki Sasaki <aki@mozilla.com>
+reason: GPG sign mac arm zip
+artifact-name: openh264-macosx64-aarch64-2e1774ab6dc6c43debb0b5b628bdf122a391d521-2.zip
+fetch:
+    type: bmo-attachment
+    attachment-id: 9281466
