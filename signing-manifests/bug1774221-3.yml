@@ -1,4 +1,5 @@
 ---
+# comment to rerun dep signing
 bug: 1774221
 sha256: b36e091ad9c4b3cd315b6bee0110c706b8f54a7b2bdf9ca292c6431e19fdb6c3
 filesize: 395414
