@@ -1,7 +1,7 @@
 ---
 bug: 123456789
-sha256: 96f41d8c2670d099b7fe4f67eeac941bc8bdd80f6c4e6d5274ffbbc851418d56
-filesize: 40046530
+sha256: 2b67927d3289e8c47ca1e775225b3e6b743b799c2dc79fddc080213e3ee972fd
+filesize: 40101751
 private-artifact: false
 signing-formats: ["autograph_authenticode"]
 requestor: Heitor Neiva <hneiva@mozilla.com>
