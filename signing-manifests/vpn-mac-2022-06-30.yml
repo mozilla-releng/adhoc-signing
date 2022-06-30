@@ -1,0 +1,14 @@
+---
+bug: 0000000
+sha256: ec337dfb38b37f13f1964eb1c01f8f51506df5216033ce5ad0ebfc437ddf29aa
+filesize: 23949656
+private-artifact: false
+signing-formats: ["macapp"]
+requestor: Heitor Neiva <hneiva@mozilla.com>
+reason: mozilla vpn 2.9 mac signing
+product: mozillavpn
+artifact-name: MozillaVPN.zip
+mac-behavior: mac_notarize_vpn
+fetch:
+    type: static-url
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/vpn/mozillavpn-unsigned-mac-2022-06-30.zip
