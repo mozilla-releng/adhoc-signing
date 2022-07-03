@@ -9,4 +9,4 @@ reason: mozillavpn Windows signing for 2.9
 artifact-name: signed-internals.zip
 fetch:
     type: static-url
-    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/9f85438a52cfb102b19c1ed07a18f101e196f626/mozillavpn-unsigned-win-2022-06-30.zip
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/vpn/mozillavpn-unsigned-win-2022-06-30.zip
