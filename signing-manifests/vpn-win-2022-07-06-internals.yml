@@ -1,7 +1,7 @@
 ---
 bug: 123456789
-sha256: 9bf61e7055e3c65883fa8037864f3d554411949dd38c02c802512e1bbd0f00ca
-filesize: 40329901
+sha256: a451eb8bba9303032f4e2f57f0d02c613b12e6c23b51dd62e6e7a4ed9a05e2c3
+filesize: 40100744
 private-artifact: false
 signing-formats: ["autograph_authenticode"]
 requestor: Heitor Neiva <hneiva@mozilla.com>
@@ -9,4 +9,4 @@ reason: mozillavpn Windows signing for 2.9.0
 artifact-name: signed-internals.zip
 fetch:
     type: static-url
-    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/vpn/mozillavpn-unsigned-win-2022-07-05.zip
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/MO_hBCsPSSCF2hdEsTicLA/runs/0/artifacts/public%2Fbuild%2Funsigned.zip
