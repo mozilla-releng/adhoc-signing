@@ -1,0 +1,12 @@
+---
+bug: 123456789
+sha256: 92beaa7acbd0571477a89a854a905c9a6730d386abb802dc93c07d3880383fd5
+filesize: 21078016
+private-artifact: false
+signing-formats: ["autograph_authenticode"]
+requestor: Andrew Halberstadt <ahal@mozilla.com>
+reason: mozilla vpn <version> windows msi signing
+artifact-name: MozillaVPN-signed.msi
+fetch:
+    type: static-url
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/Lh7dzWoDSyC5EjaHGIrzSA/runs/0/artifacts/public%2Fwindows%2Finstaller%2FMozillaVPN.msi
