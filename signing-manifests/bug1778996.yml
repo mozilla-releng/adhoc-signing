@@ -1,0 +1,13 @@
+---
+bug: 1778996
+sha256: 345481ceddd2d43ef82d73ecbef3c04266a0b18a80c6778895454ccc35fa5395
+filesize: 1452
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+signing-cert: nightly-signing
+requestor: Julien Cristau <jcristau@mozilla.com>
+reason: channel-switching from nightly-pine to nightly-pine-stable
+artifact-name: switch-to-pine-stable.mar
+fetch:
+    type: static-url
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/pine/switch-to-pine-stable.mar
