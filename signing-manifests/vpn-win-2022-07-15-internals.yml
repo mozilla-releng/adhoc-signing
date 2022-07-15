@@ -1,0 +1,12 @@
+---
+bug: 123456789
+sha256: 6ea2820ea0f4cb9ef352562527d1cf7e449598f1a4e5e7f72bf207391c2471c6
+filesize: 39908989
+private-artifact: false
+signing-formats: ["autograph_authenticode"]
+requestor: Andrew Halberstadt <ahal@mozilla.com>
+reason: mozillavpn Windows signing for 2.9.0
+artifact-name: signed-internals.zip
+fetch:
+    type: static-url
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/cAcXDO-bTd6wS2SYbTSMJw/runs/0/artifacts/public%2Fbuild%2Funsigned.zip
