@@ -1,7 +1,7 @@
 ---
 bug: 1778996
-sha256: 345481ceddd2d43ef82d73ecbef3c04266a0b18a80c6778895454ccc35fa5395
-filesize: 1452
+sha256: e18c0ab88f9c203ef1160d35015db66e5ea6a5497f9029cc25883146b3d270f2
+filesize: 1454
 private-artifact: false
 signing-formats: ["autograph_hash_only_mar384"]
 signing-cert: nightly-signing
