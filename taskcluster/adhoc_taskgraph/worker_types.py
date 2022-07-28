@@ -104,6 +104,7 @@ def build_push_apk_payload(config, task, task_def):
             # splitting this into part 1 & part 3
             "mac_notarize",
             "mac_notarize_vpn",
+            "mac_notarize_single_file",
             "mac_single_file",
         ),
         Optional("single-file-globs"): [str],
