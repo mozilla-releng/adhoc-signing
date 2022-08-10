@@ -17,9 +17,6 @@ SIGNING_ROUTE_TEMPLATES = [
 def add_signing_indexes(config, task, variant):
     routes = task.setdefault("routes", [])
 
-    if config.params["level"] != "3":
-        return task
-
     subs = config.params.copy()
     subs["build_date"] = time.strftime(
         "%Y.%m.%d", time.gmtime(config.params["build_date"])
