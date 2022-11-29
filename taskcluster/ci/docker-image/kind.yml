@@ -10,6 +10,6 @@ transforms:
     - taskgraph.transforms.cached_tasks:transforms
     - taskgraph.transforms.task:transforms
 
-jobs:
+tasks:
     fetch:
         definition: fetch
