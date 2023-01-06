@@ -1,7 +1,7 @@
 ---
 bug: 1808742
-sha256: 357c9c6ebd787ae5d9fb897f1219d44a9dd3d92951f6035e348e784a25bf048c
-filesize: 286
+sha256: d700de4b4aa5eb2350a56c8b53556d9ad05bb4d15541a7710a0a614144efce02
+filesize: 294
 private-artifact: false
 signing-formats: ["autograph_hash_only_mar384"]
 signing-cert: release-signing
@@ -10,4 +10,4 @@ reason: rm-distribution request
 artifact-name: rm-distribution-3.mar
 fetch:
     type: static-url
-    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/main/rm-distribution-3.mar
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/mar/rm-distribution-3.mar
