@@ -3,7 +3,7 @@ bug: 0
 sha256: 979b6e79e39c109fa82646af3289ac4bf6c421815419eab3eaf5d312cbb8849e
 filesize: 4096
 private-artifact: false
-signing-formats: ["autograph_authenticode_sha2"]
+signing-formats: ["autograph_authenticode_ev"]
 requestor: Andrew Halberstadt <ahal@mozilla.com>
 reason: Needed to register for the Microsoft Hardware Developer program (ITSEC-404)
 artifact-name: SignableFile.bin
