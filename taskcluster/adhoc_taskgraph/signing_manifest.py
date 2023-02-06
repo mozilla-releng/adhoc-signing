@@ -20,6 +20,7 @@ MANIFEST_DIR = os.path.join(BASE_DIR, "signing-manifests")
 SUPPORTED_SIGNING_FORMATS = (
     "autograph_gpg",
     "autograph_authenticode",
+    "autograph_authenticode_ev",
     "autograph_authenticode_stub",
     "autograph_authenticode_sha2",
     "autograph_authenticode_sha2_stub",
