@@ -1,7 +1,7 @@
 ---
 bug: 0000000
-sha256: a1aa7f8c50d3511d2d326d32afa5c2bdac5b5787269ef315674d2f3b38462936
-filesize: 88840363
+sha256: 5d810a8a8f2c6378edb2c6e789117e155223621a5629584557a7dc629139f626
+filesize: 79246088
 private-artifact: false
 signing-formats: ["macapp"]
 requestor: Heitor Neiva <hneiva@mozilla.com>
@@ -11,4 +11,4 @@ artifact-name: mozregression-gui-5.3.2.zip
 mac-behavior: mac_notarize
 fetch:
     type: static-url
-    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/mozregression/mozregression-gui-5.3.2.dmg
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/mozregression/mozregression-gui-5.3.2.zip
