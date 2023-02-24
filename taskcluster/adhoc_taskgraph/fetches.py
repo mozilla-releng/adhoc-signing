@@ -4,8 +4,6 @@
 
 from voluptuous import Required
 
-from taskgraph.util.schema import taskref_or_string
-from taskgraph.util import path as mozpath
 from taskgraph.transforms.fetch import fetch_builder
 
 
@@ -27,7 +25,6 @@ def create_fetch_url_task(config, name, fetch):
 
     artifact_name = fetch['artifact-name']
 
-    workdir = '/builds/worker'
 
     # Arguments that matter to the cache digest
     args = (

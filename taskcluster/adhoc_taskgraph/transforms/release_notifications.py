@@ -7,8 +7,6 @@ Add notifications via taskcluster-notify for release tasks
 
 
 from taskgraph.transforms.base import TransformSequence
-from taskgraph.util.keyed_by import evaluate_keyed_by
-from taskgraph.util.schema import resolve_keyed_by
 
 
 transforms = TransformSequence()

@@ -7,7 +7,6 @@ from taskgraph.parameters import extend_parameters_schema
 from voluptuous import (
     Any,
     Optional,
-    Required,
 )
 
 

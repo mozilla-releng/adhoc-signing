@@ -5,9 +5,7 @@
 
 import copy
 
-from voluptuous import Required
 
-from taskgraph.task import Task
 
 
 def loader(kind, path, config, params, loaded_tasks):
