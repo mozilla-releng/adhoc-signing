@@ -17,7 +17,7 @@ def define_signing_flags(config, tasks):
     for task in tasks:
         dep = task["primary-dependency"]
         # Current kind will be prepended later in the transform chain.
-        task["name"] = _get_dependent_job_name_without_its_kind(dep)
+        task["name"] = _get_dependent_task_name_without_its_kind(dep)
         attributes = dep.attributes.copy()
         if task.get("attributes"):
             attributes.update(task["attributes"])
@@ -95,5 +95,5 @@ def build_signing_task(config, tasks):
         yield task
 
 
-def _get_dependent_job_name_without_its_kind(dependent_job):
-    return dependent_job.label[len(dependent_job.kind) + 1 :]
+def _get_dependent_task_name_without_its_kind(dependent_task):
+    return dependent_task.label[len(dependent_task.kind) + 1 :]
