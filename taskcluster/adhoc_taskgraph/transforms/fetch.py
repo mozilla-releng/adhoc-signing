@@ -11,11 +11,11 @@ transforms = TransformSequence()
 
 
 @transforms.add
-def from_manifests(config, jobs):
-    for job in jobs:
-        manifest = job.pop('manifest')
-        job['name'] = manifest['manifest_name']
-        fetch = job.setdefault("fetch", {})
+def from_manifests(config, tasks):
+    for task in tasks:
+        manifest = task.pop('manifest')
+        task['name'] = manifest['manifest_name']
+        fetch = task.setdefault("fetch", {})
         fetch['type'] = manifest["fetch"].get('type', 'static-url')
         if fetch['type'] == 'static-url':
             fetch["url"] = manifest["fetch"]["url"]
@@ -29,9 +29,9 @@ def from_manifests(config, jobs):
         for k in ("artifact-name", ):
             if manifest.get(k):
                 fetch[k] = manifest[k]
-        job.setdefault('attributes', {})['manifest'] = manifest
+        task.setdefault('attributes', {})['manifest'] = manifest
         if manifest["private-artifact"]:
-            job["artifact-prefix"] = config.graph_config["private-artifact-prefix"]
+            task["artifact-prefix"] = config.graph_config["private-artifact-prefix"]
         else:
-            job["artifact-prefix"] = "public/build"
-        yield job
+            task["artifact-prefix"] = "public/build"
+        yield task

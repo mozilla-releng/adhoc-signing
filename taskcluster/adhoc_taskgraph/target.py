@@ -4,7 +4,6 @@
 
 
 from taskgraph.target_tasks import _target_task as target_task
-from taskgraph.target_tasks import standard_filter
 
 
 @target_task("promote_adhoc")

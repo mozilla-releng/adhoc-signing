@@ -12,7 +12,7 @@ transforms:
     - adhoc_taskgraph.transforms.signing:transforms
     - taskgraph.transforms.task:transforms
 
-job-template:
+task-template:
     description: Ad-hoc signing
     attributes:
         code-review: true

@@ -12,14 +12,14 @@ def loader(kind, path, config, params, loaded_tasks):
     """
     Create tasks for each manifest.
 
-    Optional ``job-template`` kind configuration value, if specified, will be
+    Optional ``task-template`` kind configuration value, if specified, will be
     used to pass configuration down to the specified transforms used.
     """
-    job_template = config.get("job-template")
+    task_template = config.get("task-template")
 
     for manifest in get_manifest().values():
-        job = {"manifest": manifest}
-        if job_template:
-            job.update(copy.deepcopy(job_template))
+        task = {"manifest": manifest}
+        if task_template:
+            task.update(copy.deepcopy(task_template))
 
-        yield job
+        yield task
