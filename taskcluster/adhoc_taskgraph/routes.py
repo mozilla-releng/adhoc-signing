@@ -11,7 +11,6 @@ SIGNING_ROUTE_TEMPLATES = [
     "index.{trust-domain}.v2.{project}.{name}.{variant}.revision.{revision}",
     "index.{trust-domain}.v2.{project}.{name}.{variant}.{build_date}.latest",
     "index.{trust-domain}.v2.{project}.{name}.{variant}.latest",
-    "index.{trust-domain}.v2.{project}.{variant}.latest",
 ]
 
 
