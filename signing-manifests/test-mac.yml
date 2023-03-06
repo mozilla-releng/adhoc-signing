@@ -5,7 +5,7 @@ filesize: 24263919
 private-artifact: false
 signing-formats: ["macapp"]
 requestor: Andrew Halberstadt <ahal@mozilla.com>
-reason: mozillavpn 2.12.0 mac signing
+reason: mozillavpn 2.12.0 mac signing (with new CoT key)
 product: mozillavpn
 artifact-name: MozillaVPN.tar.gz
 mac-behavior: mac_notarize_vpn
