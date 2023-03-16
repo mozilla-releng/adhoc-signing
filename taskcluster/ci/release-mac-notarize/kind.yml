@@ -1,0 +1,25 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+---
+
+loader: adhoc_taskgraph.loader.single_dep:loader
+
+kind-dependencies:
+    - release-signing
+
+transforms:
+    - adhoc_taskgraph.transforms.mac_notarize:transforms
+    - taskgraph.transforms.task:transforms
+
+task-template:
+    name: release-mac-notarize
+    description: Release-mac-notarize
+    index:
+        type: "mac-notarize"
+    attributes:
+        shipping-phase: promote
+    run-on-tasks-for: [action]
+    worker-type: "mac-notarize"
+    worker:
+        max-run-time: 3600

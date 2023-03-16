@@ -58,6 +58,14 @@ workers:
                 by-level:
                     "3": adhoc-3-signing-mac
                     default: adhoc-t-signing-mac
+        mac-notarize:
+            provisioner: scriptworker-prov-v1
+            implementation: scriptworker-signing-notarize
+            os: scriptworker
+            worker-type:
+                by-level:
+                    "3": adhoc-3-signing
+                    default: adhoc-t-signing-dev
         shipit:
             provisioner: scriptworker-k8s
             implementation: scriptworker-shipit

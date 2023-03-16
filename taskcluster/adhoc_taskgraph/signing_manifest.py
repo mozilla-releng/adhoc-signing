@@ -60,6 +60,7 @@ base_schema = Schema(
         ),
         Required("manifest_name"): str,
         Optional("mac-behavior"): str,
+        Optional("signingscript-notarization"): bool,
         Optional("product"): str,
         Optional("single-file-globs"): [str],
     }

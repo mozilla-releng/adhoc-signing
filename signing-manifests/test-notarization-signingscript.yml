@@ -1,0 +1,15 @@
+---
+bug: 0000000
+sha256: 02de554d9bb4e4fb5696f5f3789ebd190fbe60816570ea8a0df10a8b9850c331
+filesize: 157598114
+private-artifact: false
+signing-formats: ["macapp"]
+requestor: Heitor Neiva <hneiva@mozilla.com>
+reason: Firefox notarization with signingscript
+product: firefox
+artifact-name: ff-nightly.tar.gz
+mac-behavior: mac_sign_and_pkg
+signingscript-notarization: true
+fetch:
+    type: static-url
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/releases/download/v0.0.1-test/ff-nightly.tar.gz
