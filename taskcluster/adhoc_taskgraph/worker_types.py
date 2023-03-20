@@ -101,8 +101,7 @@ def build_scriptworker_signing_notarize_payload(config, task, task_def):
     if "product" in worker:
         task_def["payload"]["product"] = worker["product"]
 
-    # !!! TODO: Need to define scopes for the scriptworker notarization task
-    # _set_task_scopes(config, worker, task_def)
+    _set_task_scopes(config, worker, task_def)
 
 
 @payload_builder(
