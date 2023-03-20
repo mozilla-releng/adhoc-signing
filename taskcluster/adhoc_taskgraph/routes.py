@@ -51,5 +51,5 @@ def add_nightly_signing_indexes(config, task):
 
 
 @index_builder("mac-notarize")
-def add_nightly_signing_indexes(config, task):
+def add_mac_notarize_indexes(config, task):
     return add_signing_indexes(config, task, "mac-notarize")

@@ -12,9 +12,6 @@ transforms = TransformSequence()
 @transforms.add
 def build_notarize_task(config, tasks):
     for task in tasks:
-        if config.params["level"] != "3":
-            # Notarization only runs on level 3
-            continue
         dep = task["primary-dependency"]
         if not dep.attributes["manifest"].get("signingscript-notarization"):
             continue
