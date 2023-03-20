@@ -9,5 +9,10 @@ MAC_STATIC_VARS_BY_PRODUCT = {
         # URLs used for Mac Notarization
         "loginItemsEntitlementsUrl": "https://raw.githubusercontent.com/mozilla-mobile/mozilla-vpn-client/main/taskcluster/scripts/signing/loginItems-entitlements.xml",
         "entitlementsUrl": "https://raw.githubusercontent.com/mozilla-mobile/mozilla-vpn-client/main/taskcluster/scripts/signing/entitlements.xml",
+    },
+
+    "firefox": {
+        "entitlements-url": "https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/production.entitlements.xml",
+        "requirements-plist-url": "https://hg.mozilla.org/mozilla-central/raw-file/tip/build/package/mac_osx/requirements.plist",
     }
 }

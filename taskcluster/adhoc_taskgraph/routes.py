@@ -27,7 +27,7 @@ def add_signing_indexes(config, task, variant):
     subs["trust-domain"] = config.graph_config["trust-domain"]
     subs["revision"] = config.params.get("adhoc_revision") or "unknown"
     subs["variant"] = variant
-    manifest_name =  task.get("extra", {}).get("manifest-name")
+    manifest_name = task.get("extra", {}).get("manifest-name")
     if manifest_name:
         subs["name"] = manifest_name
         for tpl in SIGNING_ROUTE_TEMPLATES:
@@ -48,3 +48,8 @@ def add_release_signing_indexes(config, task):
 @index_builder("nightly-signing")
 def add_nightly_signing_indexes(config, task):
     return add_signing_indexes(config, task, "nightly-signing")
+
+
+@index_builder("mac-notarize")
+def add_mac_notarize_indexes(config, task):
+    return add_signing_indexes(config, task, "mac-notarize")

@@ -9,6 +9,7 @@ from taskgraph.util.schema import taskref_or_string
 from adhoc_taskgraph.static_task_vars import MAC_STATIC_VARS_BY_PRODUCT
 from voluptuous import Any, Optional, Required
 
+
 def _set_task_scopes(config, worker, task_def):
     task_def.setdefault("scopes", [])
     for artifacts in worker["upstream-artifacts"]:
@@ -45,7 +46,7 @@ def _set_task_scopes(config, worker, task_def):
             }
         ],
         Optional("product"): str,
-    }
+    },
 )
 def build_scriptworker_signing_payload(config, task, task_def):
     worker = task["worker"]
@@ -61,6 +62,47 @@ def build_scriptworker_signing_payload(config, task, task_def):
         task_def["payload"]["product"] = worker["product"]
 
     _set_task_scopes(config, worker, task_def)
+
+
+@payload_builder(
+    "scriptworker-signing-notarize",
+    schema={
+        # the maximum time to run, in seconds
+        Required("max-run-time"): int,
+        # list of artifact URLs for the artifacts that should be signed
+        Required("upstream-artifacts"): [
+            {
+                # taskId of the task with the artifact
+                Required("taskId"): taskref_or_string,
+                # type of signing task (for CoT)
+                Required("taskType"): str,
+                # Paths to the artifacts to sign
+                Required("paths"): [str],
+                # Signing formats to use on each of the paths
+                Required("formats"): [str],
+                # used to find the file-to-sign in mac_single_file behavior
+                Optional("singleFileGlobs"): [str],
+            }
+        ],
+        Optional("product"): str,
+        Optional("mac-behavior"): str,
+    },
+)
+def build_scriptworker_signing_notarize_payload(config, task, task_def):
+    worker = task["worker"]
+
+    task_def["tags"]["worker-implementation"] = "scriptworker"
+
+    task_def["payload"] = {
+        "maxRunTime": worker["max-run-time"],
+        "upstreamArtifacts": worker["upstream-artifacts"],
+    }
+
+    if "product" in worker:
+        task_def["payload"]["product"] = worker["product"]
+
+    # !!! TODO: Need to define scopes for the scriptworker notarization task
+    # _set_task_scopes(config, worker, task_def)
 
 
 @payload_builder(
@@ -106,6 +148,8 @@ def build_push_apk_payload(config, task, task_def):
             "mac_notarize_vpn",
             "mac_notarize_single_file",
             "mac_single_file",
+            "mac_sign_and_pkg",
+            "mac_sign_and_pkg_vpn",
         ),
         Optional("single-file-globs"): [str],
         Required("product"): str,
