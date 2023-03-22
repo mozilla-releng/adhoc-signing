@@ -31,7 +31,7 @@ def build_notarize_task(config, tasks):
                 "taskId": {"task-reference": "<release-signing>"},
                 "taskType": "signing",
                 "paths": [dep.attributes["fetch-artifact"]],
-                "formats": manifest["signing-formats"],
+                "formats": ["apple_notarization"],
             }
         ]
         task["worker"]["product"] = manifest["product"]
