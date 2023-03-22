@@ -20,7 +20,7 @@ task-template:
     attributes:
         shipping-phase: promote
     run-on-tasks-for: [action]
-    run-on-git-branch: ["master"]
+    run-on-git-branches: [master]
     worker-type: "mac-notarize"
     worker:
         max-run-time: 3600
