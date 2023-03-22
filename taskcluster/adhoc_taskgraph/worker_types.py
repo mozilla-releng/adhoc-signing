@@ -69,6 +69,7 @@ def build_scriptworker_signing_payload(config, task, task_def):
     schema={
         # the maximum time to run, in seconds
         Required("max-run-time"): int,
+        Required("signing-type"): str,
         # list of artifact URLs for the artifacts that should be signed
         Required("upstream-artifacts"): [
             {
