@@ -15,7 +15,7 @@ def build_notarize_task(config, tasks):
         dep = task["primary-dependency"]
         if not dep.attributes["manifest"].get("signingscript-notarization"):
             continue
-        task["dependencies"] = {"signing": dep.label}
+        task["dependencies"] = {"release-signing": dep.label}
         artifact_prefix = (
             task["attributes"].get("artifact_prefix", "public").rstrip("/")
         )
