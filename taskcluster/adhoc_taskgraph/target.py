@@ -7,7 +7,7 @@ from taskgraph.target_tasks import _target_task as target_task
 
 
 @target_task("promote_adhoc")
-def target_tasks_promote_xpi(full_task_graph, parameters, graph_config):
+def target_tasks_promote(full_task_graph, parameters, graph_config):
     """Select the set of tasks required for promoting adhoc signing."""
 
     def filter(task, parameters):

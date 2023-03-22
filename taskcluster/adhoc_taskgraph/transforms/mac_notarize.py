@@ -23,6 +23,7 @@ def build_notarize_task(config, tasks):
             scopes = task.setdefault("scopes", [])
             scopes.append(f"queue:get-artifact:{artifact_prefix}/*")
         manifest = dep.attributes["manifest"]
+        task["attributes"]["manifest"] = manifest
         manifest_name = manifest["manifest_name"]
 
         task["worker"]["upstream-artifacts"] = [
