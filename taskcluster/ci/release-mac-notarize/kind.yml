@@ -24,7 +24,4 @@ task-template:
     worker-type: "mac-notarize"
     worker:
         max-run-time: 3600
-        signing-type:
-            by-level:
-                '3': "release-apple-notarization"
-                default: dep-notarization
+        signing-type: "release-apple-notarization"
