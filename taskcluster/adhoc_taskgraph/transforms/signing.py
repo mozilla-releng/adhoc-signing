@@ -9,6 +9,7 @@ Create signing tasks.
 from taskgraph.transforms.base import TransformSequence
 from taskgraph.util.schema import resolve_keyed_by
 
+MAC_RELEASE_ONLY_FORMATS = ["autograph_widevine", "autograph_omnija"]
 transforms = TransformSequence()
 
 
@@ -51,6 +52,13 @@ def get_signing_cert(manifest, level):
         assert signing_cert in ("nightly-signing", "release-signing")
     return signing_cert
 
+def get_formats(level, manifest):
+    """Given the task level, translate the formats"""
+    formats = manifest["signing-formats"]
+    if level != "3" and manifest.get("mac-behavior"):
+        # Dep signing and mac
+        formats = [f for f in formats if f not in MAC_RELEASE_ONLY_FORMATS]
+    return formats
 
 @transforms.add
 def build_signing_task(config, tasks):
@@ -70,7 +78,7 @@ def build_signing_task(config, tasks):
             "taskId": {"task-reference": "<fetch>"},
             "taskType": "build",
             "paths": [dep.attributes["fetch-artifact"]],
-            "formats": manifest["signing-formats"],
+            "formats": get_formats(config.params["level"], manifest),
         }
         if "single-file-globs" in manifest:
             if manifest.get("mac-behavior") != "mac_single_file":

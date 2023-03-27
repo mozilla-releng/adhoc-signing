@@ -28,6 +28,8 @@ SUPPORTED_SIGNING_FORMATS = (
     "autograph_hash_only_mar384",
     "macapp",
     "mac_single_file",
+    "autograph_widevine", 
+    "autograph_omnija",
 )
 
 SUPPORTED_SIGNING_CERTS = (
