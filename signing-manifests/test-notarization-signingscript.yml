@@ -1,15 +1,16 @@
 ---
 bug: 0000000
-sha256: 02de554d9bb4e4fb5696f5f3789ebd190fbe60816570ea8a0df10a8b9850c331
-filesize: 157598114
+sha256: b78a23a6e09a5ee0aa8a60056d430c910a3286eb1a95149f29d22ab122e26552
+filesize: 148612563
 private-artifact: false
-signing-formats: ["macapp"]
+signing-formats: ["macapp", "autograph_widevine", "autograph_omnija"]
 requestor: Heitor Neiva <hneiva@mozilla.com>
 reason: Firefox notarization with signingscript
 product: firefox
-artifact-name: ff-nightly.tar.gz
-mac-behavior: mac_sign_and_pkg
+artifact-name: target.dmg
+mac-behavior: mac_sign
 signingscript-notarization: true
 fetch:
     type: static-url
-    url: https://github.com/mozilla-releng/adhoc-signing-blobs/releases/download/v0.0.1-test/ff-nightly.tar.gz
+    # mozilla-central build-macosx64-shippable/opt
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/AEdf8U_RR7agsBbTqYN-wA/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg

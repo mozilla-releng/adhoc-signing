@@ -148,6 +148,7 @@ def build_push_apk_payload(config, task, task_def):
             "mac_notarize_vpn",
             "mac_notarize_single_file",
             "mac_single_file",
+            "mac_sign",
             "mac_sign_and_pkg",
             "mac_sign_and_pkg_vpn",
         ),
