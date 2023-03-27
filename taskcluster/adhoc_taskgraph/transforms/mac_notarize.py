@@ -26,11 +26,16 @@ def build_notarize_task(config, tasks):
         task["attributes"]["manifest"] = manifest
         manifest_name = manifest["manifest_name"]
 
+        fetch_path = dep.attributes["fetch-artifact"]
+        if manifest["artifact-name"].endswith(".dmg") and manifest["mac-behavior"] == "mac_sign":
+            # mac_sign behavior produces a tar file only
+            fetch_path = fetch_path.replace(".dmg", ".tar.gz")
+
         task["worker"]["upstream-artifacts"] = [
             {
                 "taskId": {"task-reference": "<release-signing>"},
                 "taskType": "signing",
-                "paths": [dep.attributes["fetch-artifact"]],
+                "paths": [fetch_path],
                 "formats": ["apple_notarization"],
             }
         ]
