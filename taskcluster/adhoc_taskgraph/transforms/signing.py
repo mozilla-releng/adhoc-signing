@@ -52,6 +52,7 @@ def get_signing_cert(manifest, level):
         assert signing_cert in ("nightly-signing", "release-signing")
     return signing_cert
 
+
 def get_formats(level, manifest):
     """Given the task level, translate the formats"""
     formats = manifest["signing-formats"]
@@ -59,6 +60,7 @@ def get_formats(level, manifest):
         # Dep signing and mac
         formats = [f for f in formats if f not in MAC_RELEASE_ONLY_FORMATS]
     return formats
+
 
 @transforms.add
 def build_signing_task(config, tasks):
@@ -89,7 +91,7 @@ def build_signing_task(config, tasks):
             upstream_artifact["singleFileGlobs"] = manifest["single-file-globs"]
         task["worker"]["upstream-artifacts"] = [upstream_artifact]
         # Optional keys (will be validated by worker-type schema)
-        for key in ("mac-behavior", "product"):
+        for key in ("mac-behavior", "product", "hardened-sign-config"):
             if key in manifest:
                 task["worker"][key] = manifest[key]
 
