@@ -149,11 +149,13 @@ def build_push_apk_payload(config, task, task_def):
             "mac_notarize_single_file",
             "mac_single_file",
             "mac_sign",
+            "mac_sign_hardened",
             "mac_sign_and_pkg",
             "mac_sign_and_pkg_vpn",
         ),
         Optional("single-file-globs"): [str],
         Required("product"): str,
+        Optional("hardened-sign-config"): [{str: object}],
     },
 )
 def build_scriptworker_mac_signing_payload(config, task, task_def):
@@ -167,7 +169,9 @@ def build_scriptworker_mac_signing_payload(config, task, task_def):
     }
 
     task_def["payload"]["behavior"] = worker["mac-behavior"]
-    task_def["payload"]["product"] = worker["product"]
+    for key in ("product", "hardened-sign-config"):
+        if key in worker:
+            task_def["payload"][key] = worker[key]
 
     if worker["product"] in MAC_STATIC_VARS_BY_PRODUCT:
         for key, value in MAC_STATIC_VARS_BY_PRODUCT[worker["product"]].items():

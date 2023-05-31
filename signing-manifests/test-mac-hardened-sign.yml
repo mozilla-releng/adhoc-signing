@@ -1,0 +1,34 @@
+---
+bug: 0000000
+sha256: b168118ad05f0fac9b48232c7b2b3d2a723761f8e8c20e722496ff941e352b87
+filesize: 148397294
+private-artifact: false
+signing-formats: ["macapp", "autograph_widevine", "autograph_omnija"]
+requestor: Heitor Neiva <hneiva@mozilla.com>
+reason: Firefox hardened signing
+product: firefox
+artifact-name: target.dmg
+mac-behavior: mac_sign_hardened
+signingscript-notarization: true
+hardened-sign-config:
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/browser.production.entitlements.xml
+    globs:
+      - "/Contents/MacOS/crashreporter.app"
+      - "/Contents/MacOS/updater.app"
+      - "/Contents/Library/LaunchServices/org.mozilla.updater"
+      - "/Contents/MacOS/plugin-container.app"
+      - "/Contents/MacOS/XUL"
+      - "/Contents/MacOS/pingsender"
+      - "/Contents/MacOS/minidump-analyzer"
+      - "/Contents/MacOS/*.dylib"
+      - "/Contents/MacOS/firefox-bin"
+      - "/Contents/Resources/gmp-clearkey/*/*.dylib"
+      - "/"
+
+fetch:
+  type: static-url
+  # mozilla-central build-macosx64-shippable/opt
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/bQ29lnCMQjiO7Jye8xl8Kw/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
