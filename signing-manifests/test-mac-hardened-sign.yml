@@ -9,7 +9,7 @@ reason: Firefox hardened signing
 product: firefox
 artifact-name: target.dmg
 mac-behavior: mac_sign_hardened
-signingscript-notarization: false
+signingscript-notarization: true
 hardened-sign-config:
   - deep: false
     runtime: true
