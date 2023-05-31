@@ -27,7 +27,10 @@ def build_notarize_task(config, tasks):
         manifest_name = manifest["manifest_name"]
 
         fetch_path = dep.attributes["fetch-artifact"]
-        if manifest["artifact-name"].endswith(".dmg") and manifest["mac-behavior"] == "mac_sign":
+        if manifest["artifact-name"].endswith(".dmg") and manifest["mac-behavior"] in (
+            "mac_sign",
+            "mac_sign_hardened",
+        ):
             # mac_sign behavior produces a tar file only
             fetch_path = fetch_path.replace(".dmg", ".tar.gz")
 
