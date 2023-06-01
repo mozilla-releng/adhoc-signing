@@ -10,4 +10,4 @@ reason: channel-switching from mozilla-release to mozilla-esr115
 artifact-name: switch-to-esr115.mar
 fetch:
     type: static-url
-    url: https://bugzilla.mozilla.org/attachment.cgi?id=9336902
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/mar/switch-to-esr115.mar
