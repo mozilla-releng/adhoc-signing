@@ -9,5 +9,5 @@ requestor: Geoff Brown <gbrown@mozilla.com>
 reason: channel-switching from mozilla-release to mozilla-esr115
 artifact-name: switch-to-esr115.mar
 fetch:
-    type: static-url
-    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/mar/switch-to-esr115.mar
+    type: bmo-attachment
+    attachment-id: 9336902
