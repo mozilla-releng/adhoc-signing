@@ -1,0 +1,13 @@
+---
+bug: 1835022
+sha256: f2bd4983f08135a6cccb85bc45a060a76584598620698ad2ffd48e836d9e94c0
+filesize: 1422
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+signing-cert: release-signing
+requestor: Geoff Brown <gbrown@mozilla.com>
+reason: channel-switching from mozilla-release to mozilla-esr115, no distribution id
+artifact-name: switch-to-esr115.0.mar
+fetch:
+    type: bmo-attachment
+    attachment-id: 9337890
