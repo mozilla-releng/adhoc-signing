@@ -1,7 +1,7 @@
 ---
 bug: 1835022
-sha256: 23fce1b2b1c1d47401eecf4dc48ac563512e11d1f3c792715a718a2a4cabc9a9
-filesize: 1921
+sha256: ff6f28066edd89a746872a1e64528c90510a1d41eb0afb36c83229e7e697046d
+filesize: 1925
 private-artifact: false
 signing-formats: ["autograph_hash_only_mar384"]
 signing-cert: release-signing
@@ -10,4 +10,4 @@ reason: channel-switching from mozilla-release to mozilla-esr115, dist-id mozill
 artifact-name: switch-to-esr115.0-eol-win.mar
 fetch:
     type: bmo-attachment
-    attachment-id: 9337893
+    attachment-id: 9338934
