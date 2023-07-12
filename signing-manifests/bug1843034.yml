@@ -1,0 +1,13 @@
+---
+bug: 1843034
+sha256: 76e7268d24faa69d809b400caa8cf4f87f0c6c06b8274ddc98245a970139c250
+filesize: 2157
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+signing-cert: release-signing
+requestor: Julien Cristau <jcristau@mozilla.com>
+reason: channel-switching from mozilla-release to mozilla-esr115, dist-id mozilla-win-eol-esr115
+artifact-name: switch-to-esr115.1-eol-win.mar
+fetch:
+    type: bmo-attachment
+    attachment-id: 9343492
