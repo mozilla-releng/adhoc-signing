@@ -1,34 +1,53 @@
 ---
 bug: 0000000
-sha256: b168118ad05f0fac9b48232c7b2b3d2a723761f8e8c20e722496ff941e352b87
-filesize: 148397294
+sha256: 1eeeff19de29b4afe28ef34e3152334c9420cbd09462dd55ef0287b100c2d38c
+filesize: 84943278
 private-artifact: false
 signing-formats: ["macapp", "autograph_widevine", "autograph_omnija"]
-requestor: Heitor Neiva <hneiva@mozilla.com>
-reason: Firefox hardened signing
+requestor: Haik Aftandilian <haftandilian@mozilla.com>
+reason: Firefox hardened signing per-process entitlements
 product: firefox
 artifact-name: target.dmg
-mac-behavior: mac_sign_hardened
+mac-behavior: mac_sign_and_pkg_hardened
 signingscript-notarization: true
 hardened-sign-config:
   - deep: false
     runtime: true
     force: true
-    entitlements: https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/browser.production.entitlements.xml
+    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/plugin-container.xml
+    globs:
+      - "/Contents/MacOS/plugin-container.app"
+
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
+    globs:
+      - "/Contents/MacOS/media-plugin-helper.app"
+
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/default.xml
     globs:
       - "/Contents/MacOS/crashreporter.app"
       - "/Contents/MacOS/updater.app"
       - "/Contents/Library/LaunchServices/org.mozilla.updater"
-      - "/Contents/MacOS/plugin-container.app"
       - "/Contents/MacOS/XUL"
       - "/Contents/MacOS/pingsender"
       - "/Contents/MacOS/minidump-analyzer"
       - "/Contents/MacOS/*.dylib"
-      - "/Contents/MacOS/firefox-bin"
       - "/Contents/Resources/gmp-clearkey/*/*.dylib"
+
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/browser.xml
+    globs:
+      - "/Contents/MacOS/firefox-bin"
       - "/"
 
 fetch:
   type: static-url
-  # mozilla-central build-macosx64-shippable/opt
-  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/bQ29lnCMQjiO7Jye8xl8Kw/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
+  # mozilla-release OS X AArch64 Cross Compiled Shippable
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/eR4id6uNTjmm3slD9TsAXw/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
