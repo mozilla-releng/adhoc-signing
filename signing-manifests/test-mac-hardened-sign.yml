@@ -1,7 +1,7 @@
 ---
 bug: 0000000
-sha256: 1eeeff19de29b4afe28ef34e3152334c9420cbd09462dd55ef0287b100c2d38c
-filesize: 84943278
+sha256: 5b95d1a32ca449970e49d7a85a8a88294de31ec427e8b6616098b088aeea5ee7
+filesize: 80945464
 private-artifact: false
 signing-formats: ["macapp", "autograph_widevine", "autograph_omnija"]
 requestor: Haik Aftandilian <haftandilian@mozilla.com>
@@ -50,4 +50,4 @@ hardened-sign-config:
 fetch:
   type: static-url
   # mozilla-release OS X AArch64 Cross Compiled Shippable
-  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/eR4id6uNTjmm3slD9TsAXw/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/LjKBrB4WTiOpm_2A0ljKDQ/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
