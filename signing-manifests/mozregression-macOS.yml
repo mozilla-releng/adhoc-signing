@@ -9,7 +9,7 @@ private-artifact: false
 product: mozregression
 reason: Sign application bundle for mozregression 5.7.0.dev0.
 requestor: Zeid Zabaneh <zeid@mozilla.com>
-sha256: d3b8331d106713d93b3d475107064afb4845096c17be3090822037c8323ea962
+sha256: 2a1695aa6665751adee9cda4e145f88fadb481e90a921413d035d520a1bcac2f
 signing-formats:
 - macapp
 signingscript-notarization: true
