@@ -7,7 +7,7 @@ filesize: 79398089
 mac-behavior: mac_sign
 private-artifact: false
 product: mozregression
-reason: Sign application bundle for mozregression 5.6.0.
+reason: Sign application bundle for mozregression 5.7.0.dev0.
 requestor: Zeid Zabaneh <zeid@mozilla.com>
 sha256: d3b8331d106713d93b3d475107064afb4845096c17be3090822037c8323ea962
 signing-formats:
