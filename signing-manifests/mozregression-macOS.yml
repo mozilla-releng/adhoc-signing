@@ -1,14 +1,14 @@
 artifact-name: mozregression-gui-app-bundle.tar.gz
 bug: 0
 fetch:
-  url: https://github.com/mozilla/mozregression/releases/download/5.7.1.dev2/mozregression-gui-app-bundle.tar.gz
-filesize: 85660880
+  url: https://github.com/mozilla/mozregression/releases/download/5.7.1.dev3/mozregression-gui-app-bundle.tar.gz
+filesize: 85660065
 mac-behavior: mac_sign
 private-artifact: false
 product: mozregression
-reason: Sign application bundle for mozregression 5.7.1.dev2.
+reason: Sign application bundle for mozregression 5.7.1.dev3.
 requestor: Zeid Zabaneh <zeid@mozilla.com>
-sha256: 78b9a587c65b37a283cf80f6cc8e6e63800152e4de2efed76ecf60bb8776c73f
+sha256: c7e9720930552fd12f35dc9c8103d1fc04095154b55dd9911f6252f4941a80a5
 signing-formats:
 - macapp
 signingscript-notarization: true
