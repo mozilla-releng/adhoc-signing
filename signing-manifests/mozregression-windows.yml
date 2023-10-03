@@ -1,12 +1,12 @@
 artifact-name: mozregression-gui-unsigned.exe
 bug: 0
 fetch:
-  url: https://github.com/mozilla/mozregression/releases/download/5.9.1/mozregression-gui-unsigned.exe
-filesize: 35266521
+  url: https://github.com/mozilla/mozregression/releases/download/6.0.0.dev0/mozregression-gui-unsigned.exe
+filesize: 36106073
 private-artifact: false
 product: mozregression
-reason: Sign application bundle for mozregression 5.9.1.
+reason: Sign application bundle for mozregression 6.0.0.dev0.
 requestor: Zeid Zabaneh <zeid@mozilla.com>
-sha256: e38f4033a0438775d4c52b786c3f9d19943482c7f4c904101d4b4608d981f930
+sha256: 512ee0d84cd992ea553e5a0c81573cd103c66fc7529b8ee52e52aaa214c1f138
 signing-formats:
 - autograph_authenticode_sha2
