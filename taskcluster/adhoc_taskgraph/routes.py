@@ -25,7 +25,7 @@ def add_signing_indexes(config, task, variant):
         "%Y.%m.%d", time.gmtime(config.params["build_date"])
     )
     subs["trust-domain"] = config.graph_config["trust-domain"]
-    subs["revision"] = config.params.get("adhoc_revision") or "unknown"
+    subs["revision"] = config.params["head_rev"]
     subs["variant"] = variant
     manifest_name = task.get("extra", {}).get("manifest-name")
     if manifest_name:

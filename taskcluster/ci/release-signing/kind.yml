@@ -38,4 +38,4 @@ task-template:
         max-run-time: 3600
     notifications:
         subject: "{config[graph_config][notify][prefix]} {config[params][adhoc_name]} release-signing starting"
-        message: "{config[graph_config][notify][prefix]} {config[params][adhoc_name]} release-signing {config[params][shipping_phase]} starting on revision {config[params][adhoc_revision]}"
+        message: "{config[graph_config][notify][prefix]} {config[params][adhoc_name]} release-signing {config[params][shipping_phase]} starting on revision {config[params][head_rev]}"

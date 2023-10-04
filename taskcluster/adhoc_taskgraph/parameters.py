@@ -10,11 +10,9 @@ from voluptuous import (
 )
 
 
-# Please keep this list sorted and in sync with taskcluster/docs/parameters.rst
 adhoc_schema = {
     Optional('shipping_phase'): Any("build", "promote", None),
     Optional('adhoc_name'): Any(str, None),
-    Optional('adhoc_revision'): Any(str, None),
 }
 
 extend_parameters_schema(adhoc_schema)

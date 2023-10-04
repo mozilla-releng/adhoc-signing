@@ -62,11 +62,6 @@ def is_release_promotion_available(parameters):
                     manifest_name for manifest_name in ADHOC_MANIFEST.keys()
                 ),
             },
-            'revision': {
-                'type': 'string',
-                'title': 'Optional: revision to promote',
-                'description': ('Optional: the revision to promote.'),
-            },
             'release_promotion_flavor': {
                 'type': 'string',
                 'description': 'The flavor of release promotion to perform.',
@@ -111,7 +106,7 @@ def release_promotion_action(parameters, graph_config, input, task_group_id, tas
 
     # make parameters read-write
     parameters = dict(parameters)
-    # Build previous_graph_ids from ``previous_graph_ids`` or ``revision``.
+    # Build previous_graph_ids from ``previous_graph_ids`` or ``head_rev``.
     previous_graph_ids = input.get('previous_graph_ids')
     if not previous_graph_ids:
         previous_graph_ids = [find_decision_task(parameters, graph_config)]
@@ -138,11 +133,6 @@ def release_promotion_action(parameters, graph_config, input, task_group_id, tas
     # previous graphs.
     parameters['optimize_target_tasks'] = True
     parameters['adhoc_name'] = input['adhoc_name']
-    # TODO
-    #  - require this is a specific revision
-    #  - possibly also check that this is on a reviewed PR or merged into
-    #    a trusted branch. this will require an oauth token
-    parameters['adhoc_revision'] = input.get('revision', 'master')
     parameters['shipping_phase'] = input['release_promotion_flavor']
 
     if input.get('version'):
