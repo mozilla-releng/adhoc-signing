@@ -1,7 +1,7 @@
 ---
 bug: 0000000
-sha256: 5ab5244e5e55c41f6cdb92cb369ab3263874d2314c2cb3350140416bf686026d
-filesize: 89825128
+sha256: 295ed2e298cd64bb8c28d320b93979bbd90845232317b9d8c7bd279654ed90da
+filesize: 102225095
 private-artifact: false
 signing-formats: ["macapp", "autograph_widevine", "autograph_omnija"]
 requestor: Heitor Neiva <hneiva@mozilla.com>
@@ -14,14 +14,14 @@ hardened-sign-config:
   - deep: false
     runtime: true
     force: true
-    entitlements: security/mac/hardenedruntime/v2/production/plugin-container.xml
+    entitlements: https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/v2/production/plugin-container.xml
     globs:
       - "/Contents/MacOS/plugin-container.app"
 
   - deep: false
     runtime: true
     force: true
-    entitlements: security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
+    entitlements: https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
     globs:
       - "/Contents/MacOS/media-plugin-helper.app"
 
@@ -42,11 +42,11 @@ hardened-sign-config:
   - deep: false
     runtime: true
     force: true
-    entitlements: security/mac/hardenedruntime/v2/production/browser.xml
+    entitlements: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/hneiva/nightly-pprofile/browser.xml
     globs:
       - "/Contents/MacOS/firefox-bin"
       - "/"  # The .app
 
 fetch:
   type: static-url
-  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/hneiva/nightly-pprofile/target.tar.gz
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/hneiva/nightly-pprofile/target.dmg
