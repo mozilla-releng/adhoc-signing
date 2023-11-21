@@ -41,7 +41,7 @@ workers:
             provisioner: scriptworker-k8s
             implementation: scriptworker-signing
             os: scriptworker
-            worker-type: adhoc-t-signing
+            worker-type: adhoc-t-signing-dev
         signing:
             provisioner: scriptworker-k8s
             implementation: scriptworker-signing

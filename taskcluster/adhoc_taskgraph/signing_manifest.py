@@ -27,8 +27,9 @@ SUPPORTED_SIGNING_FORMATS = (
     "autograph_authenticode_sha2_rfc3161_stub",
     "autograph_hash_only_mar384",
     "macapp",
+    "apple_hardened_signing",
     "mac_single_file",
-    "autograph_widevine", 
+    "autograph_widevine",
     "autograph_omnija",
 )
 
@@ -61,9 +62,16 @@ base_schema = Schema(
             },
         ),
         Required("manifest_name"): str,
+        Optional("sign-tool"): str,
         Optional("mac-behavior"): str,
         Optional("signingscript-notarization"): bool,
         Optional("hardened-sign-config"): [{str: object}],
+        Optional("provisioning-profile-config"): [
+            {
+                "profile_name": str,
+                "target_path": str,
+            }
+        ],
         Optional("product"): str,
         Optional("single-file-globs"): [str],
     }

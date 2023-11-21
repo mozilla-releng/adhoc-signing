@@ -4,6 +4,7 @@
 
 
 from importlib import import_module
+from taskgraph.util import schema
 
 
 def register(graph_config):
@@ -25,3 +26,9 @@ def register(graph_config):
 def _import_modules(modules):
     for module in modules:
         import_module(f".{module}", package=__name__)
+
+schema.EXCEPTED_SCHEMA_IDENTIFIERS.extend(
+    [
+        "provisioning-profile-config",
+    ]
+)
