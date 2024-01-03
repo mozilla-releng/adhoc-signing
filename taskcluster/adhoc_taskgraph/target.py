@@ -3,10 +3,10 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-from taskgraph.target_tasks import _target_task as target_task
+from taskgraph.target_tasks import register_target_task
 
 
-@target_task("promote_adhoc")
+@register_target_task("promote_adhoc")
 def target_tasks_promote(full_task_graph, parameters, graph_config):
     """Select the set of tasks required for promoting adhoc signing."""
 
