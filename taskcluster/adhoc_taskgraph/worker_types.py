@@ -46,6 +46,13 @@ def _set_task_scopes(config, worker, task_def):
             }
         ],
         Optional("product"): str,
+        Optional("hardened-sign-config"): [{str: object}],
+        Optional("provisioning-profile-config"): [
+            {
+                "profile_name": str,
+                "target_path": str,
+            }
+        ],
     },
 )
 def build_scriptworker_signing_payload(config, task, task_def):
@@ -58,8 +65,9 @@ def build_scriptworker_signing_payload(config, task, task_def):
         "upstreamArtifacts": worker["upstream-artifacts"],
     }
 
-    if "product" in worker:
-        task_def["payload"]["product"] = worker["product"]
+    for key in ("product", "hardened-sign-config", "provisioning-profile-config"):
+        if key in worker:
+            task_def["payload"][key] = worker[key]
 
     _set_task_scopes(config, worker, task_def)
 
@@ -170,7 +178,7 @@ def build_scriptworker_mac_signing_payload(config, task, task_def):
     }
 
     task_def["payload"]["behavior"] = worker["mac-behavior"]
-    for key in ("product", "hardened-sign-config"):
+    for key in ("product", "hardened-sign-config", "provisioning-profile-config"):
         if key in worker:
             task_def["payload"][key] = worker[key]
 

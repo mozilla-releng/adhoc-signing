@@ -29,9 +29,10 @@ def define_signing_flags(config, tasks):
 
         # XXX: hack alert, we're taking a list and turning into a single item
         format_ = ""
-        for f in ("macapp", "mac_single_file"):
+        for f in ("macapp", "mac_single_file", "apple_hardened_signing"):
             if f in task["attributes"]["manifest"]["signing-formats"]:
                 format_ = f
+        sign_tool = task["attributes"]["manifest"].get("sign-tool")
 
         for key in ("worker-type", "worker.signing-type", "index.type"):
             resolve_keyed_by(
@@ -39,7 +40,7 @@ def define_signing_flags(config, tasks):
                 key,
                 item_name=task["name"],
                 level=config.params["level"],
-                format=format_,
+                **{"format": format_, "sign-tool": sign_tool},
             )
         yield task
 
@@ -91,7 +92,7 @@ def build_signing_task(config, tasks):
             upstream_artifact["singleFileGlobs"] = manifest["single-file-globs"]
         task["worker"]["upstream-artifacts"] = [upstream_artifact]
         # Optional keys (will be validated by worker-type schema)
-        for key in ("mac-behavior", "product", "hardened-sign-config"):
+        for key in ("mac-behavior", "product", "hardened-sign-config", "provisioning-profile-config"):
             if key in manifest:
                 task["worker"][key] = manifest[key]
 

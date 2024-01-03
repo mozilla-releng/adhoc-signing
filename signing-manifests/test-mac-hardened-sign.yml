@@ -1,48 +1,59 @@
 ---
 bug: 0000000
-sha256: 5b95d1a32ca449970e49d7a85a8a88294de31ec427e8b6616098b088aeea5ee7
-filesize: 80945464
+sha256: 68527bbca7bf226febbe0d308594740dc45175e37440566cff219b532af068db
+filesize: 112748218
 private-artifact: false
-signing-formats: ["macapp", "autograph_widevine", "autograph_omnija"]
-requestor: Haik Aftandilian <haftandilian@mozilla.com>
+signing-formats:
+  - apple_hardened_signing
+  # - autograph_widevine
+  # - autograph_omnija
+requestor: Heitor Neiva <hneiva@mozilla.com>
 reason: Firefox hardened signing per-process entitlements
 product: firefox
 artifact-name: target.dmg
-mac-behavior: mac_sign_and_pkg_hardened
 signingscript-notarization: true
+sign-tool: rcodesign
+provisioning-profile-config:
+  - profile_name: "orgmozillanightly.provisionprofile"
+    target_path: "/Contents/embedded.provisionprofile"
 hardened-sign-config:
   - deep: false
     runtime: true
     force: true
-    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/plugin-container.xml
+    entitlements: https://hg.mozilla.org/try/raw-file/tip/security/mac/hardenedruntime/v2/developer/plugin-container.xml
     globs:
       - "/Contents/MacOS/plugin-container.app"
 
   - deep: false
     runtime: true
     force: true
-    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
+    entitlements: https://hg.mozilla.org/try/raw-file/tip/security/mac/hardenedruntime/v2/developer/media-plugin-helper.xml
     globs:
       - "/Contents/MacOS/media-plugin-helper.app"
 
   - deep: false
     runtime: true
     force: true
-    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/default.xml
+    entitlements: https://hg.mozilla.org/try/raw-file/tip/security/mac/hardenedruntime/v2/developer/utility.xml
     globs:
       - "/Contents/MacOS/crashreporter.app"
       - "/Contents/MacOS/updater.app"
       - "/Contents/Library/LaunchServices/org.mozilla.updater"
-      - "/Contents/MacOS/XUL"
       - "/Contents/MacOS/pingsender"
       - "/Contents/MacOS/minidump-analyzer"
+
+  - deep: false
+    runtime: true
+    force: true
+    globs:
+      - "/Contents/MacOS/XUL"
       - "/Contents/MacOS/*.dylib"
       - "/Contents/Resources/gmp-clearkey/*/*.dylib"
 
   - deep: false
     runtime: true
     force: true
-    entitlements: https://hg.mozilla.org/try/raw-file/722d4a7887b701cdef7b8ff81d0273985adada6a/security/mac/hardenedruntime/v2/production/browser.xml
+    entitlements: https://hg.mozilla.org/try/raw-file/tip/security/mac/hardenedruntime/v2/developer/browser.xml
     globs:
       - "/Contents/MacOS/firefox-bin"
       - "/"
@@ -50,4 +61,4 @@ hardened-sign-config:
 fetch:
   type: static-url
   # mozilla-release OS X AArch64 Cross Compiled Shippable
-  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/LjKBrB4WTiOpm_2A0ljKDQ/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/W72c65ebTiua43cljitiFw/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg

@@ -19,9 +19,12 @@ task-template:
     index:
         type: dep-signing
     worker-type:
-        by-format:
-            mac.*: mac-signing
-            default: dep-signing
+        by-sign-tool:
+            rcodesign: dep-signing
+            default:
+                by-format:
+                    mac.*: mac-signing
+                    default: dep-signing
     worker:
         signing-type: dep-signing
         max-run-time: 3600
