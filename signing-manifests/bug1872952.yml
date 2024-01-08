@@ -1,0 +1,12 @@
+---
+bug: 1872952
+sha256: f5d4bab5225755dd790aaf6bee5952d0463336682d881e5e456624a45d722fe2
+filesize: 140310387
+private-artifact: false
+signing-formats: ["autograph_authenticode_sha2"]
+requestor: Alex Hochheiden <ahochheiden@mozilla.com>
+reason: MozillaBuild 4.1 release
+artifact-name: MozillaBuildSetup-4.1-unsigned.exe
+fetch:
+    type: static-url
+    url: https://archive.mozilla.org/pub/mozilla/libraries/win32/MozillaBuildSetup-4.1-unsigned.exe
