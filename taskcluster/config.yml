@@ -23,6 +23,7 @@ taskgraph:
             default-repository: https://github.com/mozilla-releng/staging-adhoc-signing
             default-ref: master
             type: git
+    cache-pull-requests: false
 
 workers:
     aliases:
