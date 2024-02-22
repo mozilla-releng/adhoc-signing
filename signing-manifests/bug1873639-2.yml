@@ -1,0 +1,13 @@
+---
+bug: 1873639
+sha256: 7c4d0d8136222aee631354a93abe4fba6dc4f5da3d502bf8106ee6fc29eee9aa
+filesize: 2094
+private-artifact: false
+signing-formats: ["autograph_hash_only_mar384"]
+signing-cert: release-signing
+requestor: Daniel Darnell <daniel@thunderbird.net>
+reason: Thunderbird channel-switching from comm-release to comm-esr115, dist-id comm-mac-eol-esr115
+artifact-name: switch-to-esr115.8.0-eol-mac.mar
+fetch:
+    type: bmo-attachment
+    attachment-id: 9380436
