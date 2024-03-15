@@ -1,0 +1,13 @@
+---
+bug: 1885457
+sha256: a5b3a9be46c35b5a8273d191b28e5edd949b0e0903ea4c04ba7a8f31e1c1277c
+filesize: 443677
+private-artifact: false
+signing-formats: ["autograph_xpi_sha1_ps256"]
+signing-cert: dep-signing
+requestor: Julien Cristau
+reason: Test add-on for CA Succession work
+artifact-name: tomato-clock-sha1-ps256.zip
+fetch:
+    type: bmo-attachment
+    attachment-id: 9391403
