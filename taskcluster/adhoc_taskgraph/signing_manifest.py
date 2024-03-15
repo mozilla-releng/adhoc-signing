@@ -30,6 +30,11 @@ SUPPORTED_SIGNING_FORMATS = (
     "mac_single_file",
     "autograph_widevine", 
     "autograph_omnija",
+    "autograph_xpi",
+    "autograph_xpi_sha1_es256_es384",
+    "autograph_xpi_sha1_es256_ps256",
+    "autograph_xpi_sha1_es256",
+    "autograph_xpi_sha1_ps256",
 )
 
 SUPPORTED_SIGNING_CERTS = (
