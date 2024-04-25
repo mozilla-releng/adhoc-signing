@@ -1,0 +1,12 @@
+artifact-name: target.installer.exe
+bug: 1889299
+fetch:
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/RFbt8jC1TWyi3zPTV_8nig/runs/0/artifacts/public%2Fbuild%2Ftarget.installer.exe
+filesize: 57011166
+private-artifact: false
+product: firefox
+reason: Re-sign esr115 installer with new certificate
+requestor: Julien Cristau <jcristau@mozilla.com>
+sha256: 75cbea88a9e66ce76e362d09adbde71fa5a55b2629fbee21118aa4c0dca61bd9
+signing-formats:
+- autograph_authenticode_202404_stub
