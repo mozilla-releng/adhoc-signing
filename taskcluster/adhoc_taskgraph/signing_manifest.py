@@ -25,6 +25,8 @@ SUPPORTED_SIGNING_FORMATS = (
     "autograph_authenticode_sha2",
     "autograph_authenticode_sha2_stub",
     "autograph_authenticode_sha2_rfc3161_stub",
+    "autograph_authenticode_202404",
+    "autograph_authenticode_202404_stub",
     "autograph_hash_only_mar384",
     "macapp",
     "mac_single_file",
