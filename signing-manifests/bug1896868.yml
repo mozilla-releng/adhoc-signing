@@ -1,0 +1,12 @@
+---
+bug: 1896868
+sha256: cffa9387a806907396a029b3c75c7bb5736fd5ae134973863b8b455a7ea09612
+filesize: 46854
+private-artifact: false
+signing-formats: ["autograph_authenticode_sha2"]
+requestor: Ben Hearsum <ben@mozilla.com>
+reason: One-off signing of an updated version of the InetBgDL nsis plugin, round 2
+artifact-name: inetbgdl-signed.zip
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/inetbgdl2/inetbgdl2.zip
