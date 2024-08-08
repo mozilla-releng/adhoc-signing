@@ -32,6 +32,7 @@ SUPPORTED_SIGNING_FORMATS = (
     "mac_single_file",
     "autograph_widevine", 
     "autograph_omnija",
+    "autograph_apk",
 )
 
 SUPPORTED_SIGNING_CERTS = (
