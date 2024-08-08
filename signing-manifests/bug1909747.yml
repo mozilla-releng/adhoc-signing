@@ -1,0 +1,12 @@
+---
+bug: 1909747
+sha256: 55454a21fe24208237b5602da944a6b1678c81a3aab493738b4fb8d24f57d814
+filesize: 44467
+private-artifact: false
+signing-formats: ["autograph_authenticode_sha2"]
+requestor: Ben Hearsum <ben@mozilla.com>
+reason: One-off signing of an updated version of the liteFirewallW.dll nsis plugin
+artifact-name: litefirewallw-signed.zip
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/bug-1909747/liteFirewallW.zip
