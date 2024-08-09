@@ -5,7 +5,7 @@ filesize: 105750413
 private-artifact: false
 signing-formats: ["autograph_apk"]
 requestor: Geoff Brown <gbrown@mozilla.com>
-reason: sign Fenix Beta with extra logging to support debugging
+reason: sign Fenix Beta with extra logging to support debugging, with the right cert
 artifact-name: fenix-beta-with-logging-and-signed.arm64-v8a.apk
 fetch:
     type: static-url
