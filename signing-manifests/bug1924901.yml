@@ -7,7 +7,8 @@ signing-formats: ["macapp"]
 requestor: Ben Hearsum <bhearsum@mozilla.com>
 reason: sign llamafile-whisperfile
 artifact-name: llamafile-whisperfile.tar.gz
-mac-behavior: mac_notarize
+mac-behavior: mac_sign
+signingscript-notarization: true
 # not technically mozregression, but the constants for mozregression seem like they ought to work
 # https://github.com/mozilla-releng/scriptworker-scripts/blob/9b6a1a4a1d03caf4d366b878b252b0de30a88122/iscript/src/iscript/constants.py#L26-L33
 product: mozregression
