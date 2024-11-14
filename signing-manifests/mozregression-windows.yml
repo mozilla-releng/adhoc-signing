@@ -9,4 +9,4 @@ reason: Sign application bundle for mozregression 6.2.2.
 requestor: Zeid Zabaneh <zeid@mozilla.com>
 sha256: d5d4a8cc9c317c305fc197655bc602dfb629399cad5b5b1d8cdc227e92e7fd1a
 signing-formats:
-- autograph_authenticode_sha2
+- autograph_authenticode_202404
