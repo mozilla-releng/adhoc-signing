@@ -1,0 +1,12 @@
+---
+bug: 5555555
+sha256: 7da9a81324ce1c80e013b8dc92d4025a9159756b3f80368c62165e268a5f74b0
+filesize: 119979935
+private-artifact: false
+signing-formats: ["gcp_prod_autograph_apk"]
+requestor: Ben Hearsum <ben@mozilla.com>
+reason: test autograph gcp prod
+artifact-name: fenix.apk
+fetch:
+    type: static-url
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/c42fWt_kRDCJwI75QLZG3g/runs/0/artifacts/public%2Fbuild%2Ftarget.x86_64.apk

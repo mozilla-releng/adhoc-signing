@@ -1,0 +1,12 @@
+---
+bug: 5555555
+sha256: 3fd1824ecc6902d61736715d4bc4655e81d7d64966cc1217474b3dd066b2ba80
+filesize: 253598
+private-artifact: false
+signing-formats: ["gcp_prod_autograph_xpi"]
+requestor: Ben Hearsum <ben@mozilla.com>
+reason: test autograph gcp prod
+artifact-name: langpack.xpi
+fetch:
+    type: static-url
+    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/OWjF1BTnQDGcgzCvS8Ac4Q/runs/0/artifacts/public%2Fbuild%2Fach%2Ftarget.langpack.xpi

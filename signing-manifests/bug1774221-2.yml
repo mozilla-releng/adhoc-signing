@@ -3,7 +3,7 @@ bug: 1774221
 sha256: 5d98cad3d4c0dc3095a81afb442b6e766cadbf7cba299e09a0050d43d465f99e
 filesize: 488639
 private-artifact: false
-signing-formats: ["autograph_gpg"]
+signing-formats: ["gcp_prod_autograph_gpg"]
 requestor: Aki Sasaki <aki@mozilla.com>
 reason: GPG sign mac x64 zip
 artifact-name: openh264-macosx64-2e1774ab6dc6c43debb0b5b628bdf122a391d521-2.zip
