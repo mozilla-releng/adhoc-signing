@@ -33,6 +33,13 @@ SUPPORTED_SIGNING_FORMATS = (
     "autograph_widevine", 
     "autograph_omnija",
     "autograph_apk",
+    "gcp_prod_autograph_authenticode_ev",
+    "gcp_prod_autograph_authenticode_202404",
+    "gcp_prod_autograph_authenticode_202404_stub",
+    "gcp_prod_autograph_hash_only_mar384",
+    "gcp_prod_autograph_gpg",
+    "gcp_prod_autograph_xpi",
+    "gcp_prod_autograph_apk",
 )
 
 SUPPORTED_SIGNING_CERTS = (
