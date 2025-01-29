@@ -12,39 +12,37 @@ mac-behavior: mac_sign_and_pkg_hardened
 signingscript-notarization: true
 hardened-sign-config:
   - deep: false
-    runtime: true
     force: true
-    entitlements: https://raw.githubusercontent.com/mozilla/gecko-dev/dd8b64a6198ff599a5eb2ca096845ebd6997457f/security/mac/hardenedruntime/v2/production/plugin-container.xml
     globs:
       - "/Contents/MacOS/plugin-container.app"
-
-  - deep: false
     runtime: true
+    entitlements: https://hg.mozilla.org/releases/mozilla-release/raw-file/983c92bf7d784b40684da7409a2f72d69a14eec0/security/mac/hardenedruntime/v2/production/plugin-container.xml
+  - deep: false
     force: true
-    entitlements: https://raw.githubusercontent.com/mozilla/gecko-dev/dd8b64a6198ff599a5eb2ca096845ebd6997457f/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
     globs:
       - "/Contents/MacOS/media-plugin-helper.app"
-
-  - deep: false
     runtime: true
+    entitlements: https://hg.mozilla.org/releases/mozilla-release/raw-file/983c92bf7d784b40684da7409a2f72d69a14eec0/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
+  - deep: false
     force: true
     globs:
       - "/Contents/MacOS/crashreporter.app"
+      - "/Contents/MacOS/updater.app/Contents/Frameworks/UpdateSettings.framework"
       - "/Contents/MacOS/updater.app"
       - "/Contents/Library/LaunchServices/org.mozilla.updater"
       - "/Contents/MacOS/XUL"
       - "/Contents/MacOS/pingsender"
-      - "/Contents/MacOS/minidump-analyzer"
+      - "/Contents/MacOS/nmhproxy"
       - "/Contents/MacOS/*.dylib"
       - "/Contents/Resources/gmp-clearkey/*/*.dylib"
-
-  - deep: false
+      - "/Contents/Frameworks/ChannelPrefs.framework"
     runtime: true
+  - deep: false
     force: true
-    entitlements: https://raw.githubusercontent.com/mozilla/gecko-dev/dd8b64a6198ff599a5eb2ca096845ebd6997457f/security/mac/hardenedruntime/v2/production/firefox.browser.xml
     globs:
-      - "/Contents/MacOS/firefox-bin"
       - "/"
+    runtime: true
+    entitlements: https://hg.mozilla.org/releases/mozilla-release/raw-file/983c92bf7d784b40684da7409a2f72d69a14eec0/security/mac/hardenedruntime/v2/production/firefox.browser.xml
 
 fetch:
   type: static-url
