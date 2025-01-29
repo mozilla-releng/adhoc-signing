@@ -1,0 +1,52 @@
+---
+bug: 1942364
+sha256: 3d60438dc77117a5eaa838cbd69896967ae14547ab008720927677f17e61fc6a
+filesize: 98706293
+private-artifact: false
+signing-formats: ["macapp", "gcp_prod_autograph_widevine", "gcp_prod_autograph_omnija"]
+requestor: Ben Hearsum <ben@mozilla.com"
+reason: test new gcp_prod_autograph_ signing formats
+product: firefox
+artifact-name: target.dmg
+mac-behavior: mac_sign_and_pkg_hardened
+signingscript-notarization: true
+hardened-sign-config:
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://raw.githubusercontent.com/mozilla/gecko-dev/dd8b64a6198ff599a5eb2ca096845ebd6997457f/security/mac/hardenedruntime/v2/production/plugin-container.xml
+    globs:
+      - "/Contents/MacOS/plugin-container.app"
+
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://raw.githubusercontent.com/mozilla/gecko-dev/dd8b64a6198ff599a5eb2ca096845ebd6997457f/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
+    globs:
+      - "/Contents/MacOS/media-plugin-helper.app"
+
+  - deep: false
+    runtime: true
+    force: true
+    globs:
+      - "/Contents/MacOS/crashreporter.app"
+      - "/Contents/MacOS/updater.app"
+      - "/Contents/Library/LaunchServices/org.mozilla.updater"
+      - "/Contents/MacOS/XUL"
+      - "/Contents/MacOS/pingsender"
+      - "/Contents/MacOS/minidump-analyzer"
+      - "/Contents/MacOS/*.dylib"
+      - "/Contents/Resources/gmp-clearkey/*/*.dylib"
+
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://raw.githubusercontent.com/mozilla/gecko-dev/dd8b64a6198ff599a5eb2ca096845ebd6997457f/security/mac/hardenedruntime/v2/production/firefox.browser.xml
+    globs:
+      - "/Contents/MacOS/firefox-bin"
+      - "/"
+
+fetch:
+  type: static-url
+  # mozilla-release OS X AArch64 Cross Compiled Shippable
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/PqnfWv9_QFm5BGnCCJEWhA/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
