@@ -1,0 +1,50 @@
+---
+bug: 0000000
+sha256: 276e5468901c0bec00eade16977e29acf4ce6ec5aaca583ced35a69a9d538830
+filesize: 154891901
+private-artifact: false
+signing-formats: ["macapp", "autograph_widevine"]
+requestor: Bastien Orivel <borivel@mozilla.com>
+reason: Testing rcodesign update
+product: firefox
+artifact-name: target.dmg
+mac-behavior: mac_sign_and_pkg_hardened
+signingscript-notarization: true
+hardened-sign-config:
+  - deep: false
+    force: true
+    globs:
+      - "/Contents/MacOS/plugin-container.app"
+    runtime: true
+    entitlements: https://hg.mozilla.org/releases/mozilla-release/raw-file/983c92bf7d784b40684da7409a2f72d69a14eec0/security/mac/hardenedruntime/v2/production/plugin-container.xml
+  - deep: false
+    force: true
+    globs:
+      - "/Contents/MacOS/media-plugin-helper.app"
+    runtime: true
+    entitlements: https://hg.mozilla.org/releases/mozilla-release/raw-file/983c92bf7d784b40684da7409a2f72d69a14eec0/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
+  - deep: false
+    force: true
+    globs:
+      - "/Contents/MacOS/crashreporter.app"
+      - "/Contents/MacOS/updater.app/Contents/Frameworks/UpdateSettings.framework"
+      - "/Contents/MacOS/updater.app"
+      - "/Contents/Library/LaunchServices/org.mozilla.updater"
+      - "/Contents/MacOS/XUL"
+      - "/Contents/MacOS/pingsender"
+      - "/Contents/MacOS/nmhproxy"
+      - "/Contents/MacOS/*.dylib"
+      - "/Contents/Resources/gmp-clearkey/*/*.dylib"
+      - "/Contents/Frameworks/ChannelPrefs.framework"
+    runtime: true
+  - deep: false
+    force: true
+    globs:
+      - "/"
+    runtime: true
+    entitlements: https://hg.mozilla.org/releases/mozilla-release/raw-file/983c92bf7d784b40684da7409a2f72d69a14eec0/security/mac/hardenedruntime/v2/production/firefox.browser.xml
+
+fetch:
+  type: static-url
+  # mozilla-release OS X AArch64 Cross Compiled Shippable
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/CuHy6YIWQLi0E2ypYBtcqQ/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
