@@ -3,7 +3,7 @@ bug: 0000000
 sha256: 276e5468901c0bec00eade16977e29acf4ce6ec5aaca583ced35a69a9d538830
 filesize: 154891901
 private-artifact: false
-signing-formats: ["macapp", "autograph_widevine"]
+signing-formats: ["macapp", "gcp_prod_autograph_widevine"]
 requestor: Bastien Orivel <borivel@mozilla.com>
 reason: Testing rcodesign update
 product: firefox
