@@ -1,0 +1,12 @@
+---
+bug: 1942364
+sha256: f2bd4983f08135a6cccb85bc45a060a76584598620698ad2ffd48e836d9e94c0
+filesize: 1422
+private-artifact: true
+signing-formats: [ "gcp_prod_autograph_gpg" ]
+requestor: Ben Hearsum <ben@mozilla.com"
+reason: test new gcp_prod_autograph_gpg signing format
+artifact-name: switch-to-esr115.mar
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/mar/switch-to-esr115.mar
