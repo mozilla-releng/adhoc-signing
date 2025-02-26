@@ -1,0 +1,22 @@
+---
+bug: 1950585
+sha256: 97564073c18b216074446bbf2fcc6b94a23021752efc8aa376f4d2f1903e48a1
+filesize: 9087119
+private-artifact: true
+signing-formats: ["macapp"]
+requestor: Johan Lorenzo <jlorenzo@mozilla.com"
+reason: Test macOS signing with a new app (Hiro Redux)
+product: hiro-redux
+artifact-name: bug-1950585.tar.gz
+mac-behavior: mac_sign_hardened
+signingscript-notarization: true
+hardened-sign-config:
+  - deep: false
+    force: true
+    globs:
+      - "/Contents/MacOS/hiro-redux"
+    runtime: true
+
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/bug-1950585/bug-1950585.tar.gz
