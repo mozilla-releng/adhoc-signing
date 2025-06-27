@@ -56,8 +56,8 @@ workers:
             os: macosx
             worker-type:
                 by-level:
-                    "3": adhoc-3-signing-mac
-                    default: adhoc-t-signing-mac
+                    "3": adhoc-signing-mac14m2
+                    default: dep-adhoc-signing-mac14m2
         mac-notarize:
             provisioner: scriptworker-k8s
             implementation: scriptworker-signing
