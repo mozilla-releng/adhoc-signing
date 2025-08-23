@@ -183,7 +183,6 @@ tasks:
                                     ADHOC_HEAD_REPOSITORY: '${repoUrl}'
                                     ADHOC_HEAD_REF: '${head_branch}'
                                     ADHOC_HEAD_REV: '${head_sha}'
-                                    ADHOC_PIP_REQUIREMENTS: taskcluster/requirements.txt
                                     ADHOC_REPOSITORY_TYPE: git
                                     REPOSITORIES: {$json: {adhoc: "Adhoc Manifest"}}
                                     HG_STORE_PATH: /builds/worker/checkouts/hg-store
@@ -201,7 +200,7 @@ tasks:
                               chainOfTrust: true
                           # Note: This task is built server side without the context or tooling that
                           # exist in tree so we must hard code the hash
-                          image: mozillareleases/taskgraph:decision-c4ac262880970ca484105929e02dd12f00214d5f2603ab6ce4c0d17de5cd0280@sha256:2dd667994aa13fccdcdcede85c570a5eb4a5247e42875a9e95a135ef774ee469
+                          image: mozillareleases/taskgraph:decision-v15.0.1@sha256:a7d5456913bbba1deff8eb1ffcd840fab9b96e209c58826ad974589b75e6e02c
                           maxRunTime: 1800
 
                           command:
