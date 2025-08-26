@@ -6,9 +6,9 @@
 import glob
 import os
 from copy import deepcopy
+from functools import cache
 
 from taskgraph.util import yaml
-from taskgraph.util.memoize import memoize
 from taskgraph.util.readonlydict import ReadOnlyDict
 from taskgraph.util.schema import validate_schema
 from voluptuous import Any, Optional, Required, Schema
@@ -97,7 +97,7 @@ def check_manifest(manifest):
         assert manifest["product"] == "mozillavpn"
 
 
-@memoize
+@cache
 def get_manifest():
     manifest_paths = glob.glob(os.path.join(MANIFEST_DIR, "*.yml"))
     all_manifests = {}
