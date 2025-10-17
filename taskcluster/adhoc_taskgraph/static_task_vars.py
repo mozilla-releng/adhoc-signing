@@ -12,8 +12,7 @@ MAC_STATIC_VARS_BY_PRODUCT = {
     },
 
     "firefox": {
-        "entitlements-url": "https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/v1/production/browser.xml",
-        "requirements-plist-url": "https://hg.mozilla.org/mozilla-central/raw-file/tip/build/package/mac_osx/requirements.plist",
+        "requirements-plist-url": "https://raw.githubusercontent.com/mozilla-firefox/firefox/refs/heads/main/build/package/mac_osx/requirements.plist",
     },
     "mozregression": {
         "entitlements-url": "https://raw.githubusercontent.com/mozilla/mozregression/main/gui/mac/entitlements.xml",
