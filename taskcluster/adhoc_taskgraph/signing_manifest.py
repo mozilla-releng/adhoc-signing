@@ -18,21 +18,8 @@ ROOT = os.path.join(BASE_DIR, "taskcluster", "ci")
 MANIFEST_DIR = os.path.join(BASE_DIR, "signing-manifests")
 
 SUPPORTED_SIGNING_FORMATS = (
-    "autograph_gpg",
-    "autograph_authenticode",
-    "autograph_authenticode_ev",
-    "autograph_authenticode_stub",
-    "autograph_authenticode_sha2",
-    "autograph_authenticode_sha2_stub",
-    "autograph_authenticode_sha2_rfc3161_stub",
-    "autograph_authenticode_202404",
-    "autograph_authenticode_202404_stub",
-    "autograph_hash_only_mar384",
     "macapp",
     "mac_single_file",
-    "autograph_widevine",
-    "autograph_omnija",
-    "autograph_apk",
     "gcp_prod_autograph_authenticode_ev_202412",
     "gcp_prod_autograph_authenticode_202412",
     "gcp_prod_autograph_authenticode_202412_stub",
