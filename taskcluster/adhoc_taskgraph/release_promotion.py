@@ -29,7 +29,7 @@ def is_release_promotion_available(parameters):
     title='Promote an adhoc signature',
     symbol='${input.release_promotion_flavor}_${input.adhoc_name}',
     description="Promote an adhoc signature.",
-    generic=False,
+    permission='release-promotion',
     order=500,
     context=[],
     available=is_release_promotion_available,
