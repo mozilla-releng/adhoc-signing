@@ -2,10 +2,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-FROM ubuntu:18.04
+FROM debian:13
 
 ### Add worker user and setup its workspace.
-RUN mkdir /builds && \
+RUN mkdir -p /builds && \
     groupadd -g 1000 worker && \
     useradd -u 1000 -g 1000 -d /builds/worker -s /bin/bash -m worker && \
     mkdir -p /builds/worker/workspace && \
