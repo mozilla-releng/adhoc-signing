@@ -1,0 +1,12 @@
+---
+bug: 1234567
+sha256: 4dd173d84646ec43a3d437af66cac78506240564a21d0644082150074e04da78
+filesize: 788429292
+private-artifact: false
+signing-formats: [ "gcp_prod_autograph_gpg" ]
+requestor: Julien Cristau <jcristau@mozilla.com"
+reason: test new gcp_prod_autograph_gpg signing format
+artifact-name: source.tar.xz
+fetch:
+  type: static-url
+  url: https://firefoxci.taskcluster-artifacts.net/OlXzIY7FSKWDssmqSJ-sHw/0/public/build/source.tar.xz
