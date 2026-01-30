@@ -47,4 +47,4 @@ hardened-sign-config:
 fetch:
   type: static-url
   # mozilla-release OS X AArch64 Cross Compiled Shippable
-  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/CuHy6YIWQLi0E2ypYBtcqQ/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/dzv_zbqEQY2lO_ZItBy5ag/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
