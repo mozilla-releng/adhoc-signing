@@ -6,7 +6,7 @@ private-artifact: false
 signing-formats: [ "gcp_prod_autograph_gpg" ]
 requestor: Ben Hearsum <ben@mozilla.com"
 reason: test new gcp_prod_autograph_gpg signing format
-artifact-name: switch-to-esr115.mar
+artifact-name: new-switch-to-esr115.mar
 fetch:
   type: static-url
   url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/mar/switch-to-esr115.mar

@@ -11,6 +11,6 @@ transforms:
     - taskgraph.transforms.task:transforms
 
 task-template:
-    description: 'Unsigned artifact'
+    description: 'unsigned artifact'
     attributes:
         code-review: true

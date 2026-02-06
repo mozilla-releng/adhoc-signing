@@ -1,13 +1,13 @@
 ---
 bug: 1942364
-sha256: 3d60438dc77117a5eaa838cbd69896967ae14547ab008720927677f17e61fc6a
-filesize: 98706293
+sha256: 48485e2068bc726e2f30cf5855fc2da1fc75c1272bc243a5394f428ffae3ba35
+filesize: 145832893
 private-artifact: false
 signing-formats: ["macapp", "gcp_prod_autograph_widevine", "gcp_prod_autograph_omnija"]
 requestor: Ben Hearsum <ben@mozilla.com"
 reason: test new gcp_prod_autograph_ signing formats
 product: firefox
-artifact-name: target.dmg
+artifact-name: new-target.dmg
 mac-behavior: mac_sign_and_pkg_hardened
 signingscript-notarization: true
 hardened-sign-config:
@@ -46,5 +46,6 @@ hardened-sign-config:
 
 fetch:
   type: static-url
-  # mozilla-release OS X AArch64 Cross Compiled Shippable
-  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/PqnfWv9_QFm5BGnCCJEWhA/runs/0/artifacts/public%2Fbuild%2Ftarget.dmg
+  # technically signed already, but that doesn't make a difference for our tests (it will be stripped away),
+  # and using this long lived URL is better than needing to update a taskcluster URL each time a task expires.
+  url: https://archive.mozilla.org/pub/firefox/releases/147.0/mac/en-US/Firefox%20147.0.dmg

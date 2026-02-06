@@ -6,7 +6,7 @@ private-artifact: false
 signing-formats: ["gcp_prod_autograph_authenticode_202412"]
 requestor: Ben Hearsum <ben@mozilla.com>"
 reason: test new gcp_prod_autograph_authenticode signing format
-artifact-name: target.installer-stub.exe
+artifact-name: new-target.installer-stub.exe
 fetch:
     type: static-url
     url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/YWjdD8QqSaKF3YyELrD7bQ/runs/0/artifacts/public/build/install/sea/target.installer-stub.exe
