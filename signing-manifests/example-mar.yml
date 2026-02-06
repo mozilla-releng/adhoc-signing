@@ -2,7 +2,7 @@
 bug: 1942364
 sha256: f2bd4983f08135a6cccb85bc45a060a76584598620698ad2ffd48e836d9e94c0
 filesize: 1422
-private-artifact: true
+private-artifact: false
 signing-formats: [ "gcp_prod_autograph_hash_only_mar384" ]
 requestor: Ben Hearsum <ben@mozilla.com"
 reason: test new gcp_prod_autograph_gpg signing format
