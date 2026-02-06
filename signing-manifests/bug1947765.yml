@@ -7,7 +7,7 @@ signing-formats: [ "gcp_prod_autograph_gpg" ]
 requestor: Julien Cristau <jcristau@mozilla.com"
 reason: test new gpg signing subkey
 signing-cert: nightly-signing
-artifact-name: firefox-138.0a1.en-US.linux-x86_64.tar.xz
+artifact-name: new-firefox-138.0a1.en-US.linux-x86_64.tar.xz
 fetch:
   type: static-url
   url: https://archive.mozilla.org/pub/firefox/nightly/2025/03/2025-03-31-08-50-46-mozilla-central/firefox-138.0a1.en-US.linux-x86_64.tar.xz
