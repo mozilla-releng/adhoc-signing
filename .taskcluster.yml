@@ -200,10 +200,10 @@ tasks:
                               # `taskgraph decision` are all on the command line.
                               $merge:
                                   - ADHOC_BASE_REPOSITORY: '${baseRepoUrl}'
-                                    ADHOC_BASE_REF: '${short_base_ref}'
+                                    ADHOC_BASE_REF: '${base_ref}'
                                     ADHOC_BASE_REV: '${base_sha}'
                                     ADHOC_HEAD_REPOSITORY: '${repoUrl}'
-                                    ADHOC_HEAD_REF: '${short_head_ref}'
+                                    ADHOC_HEAD_REF: '${head_ref}'
                                     ADHOC_HEAD_REV: '${head_sha}'
                                     ADHOC_REPOSITORY_TYPE: git
                                     REPOSITORIES:
