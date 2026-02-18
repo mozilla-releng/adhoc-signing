@@ -9,4 +9,4 @@ reason: test new gcp_prod_autograph_authenticode signing format
 artifact-name: new-target.installer-stub.exe
 fetch:
     type: static-url
-    url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/YWjdD8QqSaKF3YyELrD7bQ/runs/0/artifacts/public/build/install/sea/target.installer-stub.exe
+    url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/examples/target.installer-stub.exe
