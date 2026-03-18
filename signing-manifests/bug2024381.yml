@@ -1,0 +1,51 @@
+---
+bug: 2024381
+sha256: 2d28c09c9f5064efbfdd50bd2222a391a1a0fcac3c09da4fcca66a7dbe61f5ff
+filesize: 113382487
+private-artifact: false
+signing-formats: ["macapp", "gcp_prod_autograph_widevine", "gcp_prod_autograph_omnija"]
+requestor: Alexandre Lissy<alissy@mozilla.com>"
+reason: Custom build
+product: firefox
+artifact-name: firefox-ent-150.0a1.dmg
+mac-behavior: mac_sign_and_pkg_hardened
+signingscript-notarization: true
+hardened-sign-config:
+  - deep: false
+    force: true
+    globs:
+      - /Contents/MacOS/plugin-container.app
+    runtime: true
+    entitlements: https://github.com/mozilla/enterprise-firefox/raw/68a3297aae1e873bd8384416e39b5b70a86124d6/security/mac/hardenedruntime/production/plugin-container.xml
+  - deep: false
+    force: true
+    globs:
+      - /Contents/MacOS/media-plugin-helper.app
+    runtime: true
+    entitlements: https://github.com/mozilla/enterprise-firefox/raw/68a3297aae1e873bd8384416e39b5b70a86124d6/security/mac/hardenedruntime/production/media-plugin-helper.xml
+  - deep: false
+    force: true
+    globs:
+      - /Contents/MacOS/crashhelper
+      - /Contents/MacOS/crashreporter.app
+      - >-
+        /Contents/MacOS/updater.app/Contents/Frameworks/UpdateSettings.framework
+      - /Contents/MacOS/updater.app
+      - /Contents/MacOS/gpu-helper.app
+      - /Contents/Library/LaunchServices/org.mozilla.updater
+      - /Contents/MacOS/XUL
+      - /Contents/MacOS/pingsender
+      - /Contents/MacOS/nmhproxy
+      - /Contents/MacOS/*.dylib
+      - /Contents/Resources/gmp-clearkey/*/*.dylib
+      - /Contents/Frameworks/ChannelPrefs.framework
+    runtime: true
+  - deep: false
+    force: true
+    globs:
+      - /
+    runtime: true
+    entitlements: https://github.com/mozilla/enterprise-firefox/raw/68a3297aae1e873bd8384416e39b5b70a86124d6/security/mac/hardenedruntime/production/firefoxenterprise.browser.xml
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/ff-ent/150.0/firefox-150.0a1.en-US.mac.dmg
