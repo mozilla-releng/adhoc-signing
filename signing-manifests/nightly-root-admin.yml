@@ -8,9 +8,8 @@ requestor: Heitor Neiva <hneiva@mozilla.com>
 reason: Test signing and notarization pkg with root:admin
 product: firefox
 artifact-name: nightly-root-admin.pkg.tar.gz
-mac-behavior: mac_single_file
+mac-behavior: mac_sign_pkg
 signingscript-notarization: true
-single-file-globs: ["*.pkg"]
 fetch:
   type: static-url
   url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/pkg-root-admin/nightly-root-admin.pkg.tar.gz
