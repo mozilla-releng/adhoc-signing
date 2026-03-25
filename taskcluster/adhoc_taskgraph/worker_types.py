@@ -153,6 +153,7 @@ def build_push_apk_payload(config, task, task_def):
             "mac_sign_and_pkg",
             "mac_sign_and_pkg_hardened",
             "mac_sign_and_pkg_vpn",
+            "mac_sign_pkg",
         ),
         Optional("single-file-globs"): [str],
         Required("product"): str,
