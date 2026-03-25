@@ -1,0 +1,16 @@
+---
+bug: 0
+sha256: 2319b2b241ebe7f2494bbbe2b6ee3b41794c0c071f0803cdfb81d59280ac988c
+filesize: 155709423
+private-artifact: false
+signing-formats: ["mac_single_file"]
+requestor: Heitor Neiva <hneiva@mozilla.com>
+reason: Test signing and notarization pkg with root:admin
+product: firefox
+artifact-name: nightly-root-admin.pkg.tar.gz
+mac-behavior: mac_single_file
+signingscript-notarization: true
+single-file-globs: ["*.pkg"]
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/pkg-root-admin/nightly-root-admin.pkg.tar.gz
