@@ -1,0 +1,15 @@
+---
+bug: 0000000
+sha256: 27b6f708df52e772cf860d976082a38f77351a2202ca0303f268b5d670303815
+filesize: 57330346
+private-artifact: false
+signing-formats: ["mac_single_file"]
+requestor: Heitor Neiva <hneiva@mozilla.com>
+reason: Testing vpn repack pkg signing+notarization
+artifact-name: MozillaVPN-unsigned-20250623.zip
+mac-behavior: mac_single_file
+product: mozillavpn
+fetch:
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/vpn/MozillaVPN-unsigned-20250623.zip
+# Optional, only if mac-behavior is mac_single_file
+single-file-globs: ["MozillaVPN.pkg"]
