@@ -28,6 +28,7 @@ hardened-sign-config:
     globs:
       - /Contents/MacOS/crashhelper
       - /Contents/MacOS/crashreporter.app
+      - /Contents/MacOS/security-module-helper.app
       - >-
         /Contents/MacOS/updater.app/Contents/Frameworks/UpdateSettings.framework
       - /Contents/MacOS/updater.app
