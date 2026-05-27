@@ -3,16 +3,18 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
+from typing import Literal, Optional
+
 from taskgraph.parameters import extend_parameters_schema
-from voluptuous import (
-    Any,
-    Optional,
+from taskgraph.util.schema import Schema
+
+
+adhoc_schema = Schema.from_dict(
+    {
+        "shipping_phase": Optional[Literal["build", "promote"]],
+        "adhoc_name": Optional[str],
+    },
+    kw_only=True,
 )
-
-
-adhoc_schema = {
-    Optional('shipping_phase'): Any("build", "promote", None),
-    Optional('adhoc_name'): Any(str, None),
-}
 
 extend_parameters_schema(adhoc_schema)
