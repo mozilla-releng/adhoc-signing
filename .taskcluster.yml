@@ -223,7 +223,7 @@ tasks:
                               taskclusterProxy: true
                               chainOfTrust: true
 
-                          image: mozillareleases/taskgraph:decision-v20.0.0@sha256:afae5e5d3caaeb10a93fae56bc3176d1e73faf9b616c01facf811e488db4eafe
+                          image: mozillareleases/taskgraph:decision-v23.1.0@sha256:a1c4bbab3fc885000eb4e9b53dd48131128ba995479a8c3a4263cf321bf0a581
                           maxRunTime: 1800
 
                           command:
