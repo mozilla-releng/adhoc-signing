@@ -1,12 +1,12 @@
 ---
 bug: 2058197
-sha256: 0e2dec70ec9ac0960714fbdcd92e6c71eb9caa9443fac728dfe161bb9cb78d3b
-filesize: 41099201
+sha256: 6ea7379c609bf851a5aabddddd1493929ab33b4a3d64c8044223aa4222376269
+filesize: 41099069
 private-artifact: false
 signing-formats: [ "gcp_prod_autograph_hash_only_mar384" ]
 requestor: Ben Hearsum <ben@mozilla.com"
 reason: verify proposed fix for 153 startup crash incident
-artifact-name: 152.0.6-153.0-win64-en-US.partial-firefox-exe-last.mar
+artifact-name: 152.0.6-153.0-win64-en-US.partial-firefox-exe-last-v2.mar
 fetch:
   type: static-url
-  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/153-incident/152.0.6-153.0-win64-en-US.partial-firefox-exe-last.mar
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/153-incident/152.0.6-153.0-win64-en-US.partial-firefox-exe-last-v2.mar
