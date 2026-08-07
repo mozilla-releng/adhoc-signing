@@ -20,6 +20,7 @@ MANIFEST_DIR = os.path.join(BASE_DIR, "signing-manifests")
 SUPPORTED_SIGNING_FORMATS = (
     "macapp",
     "mac_single_file",
+    "autograph_rpmsign",
     "gcp_prod_autograph_authenticode_ev_202412",
     "gcp_prod_autograph_authenticode_202412",
     "gcp_prod_autograph_authenticode_202412_stub",

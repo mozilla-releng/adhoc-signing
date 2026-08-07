@@ -1,0 +1,12 @@
+---
+bug: 2061475
+sha256: 7b12c3667cf20213e7d469180ceff46d20bdc93ce97b8d42e7fd3b2154f4e3f0
+filesize: 307312
+private-artifact: false
+signing-formats: [ "autograph_rpmsign" ]
+requestor: Ben Hearsum <ben@mozilla.com"
+reason: test autograph rpm signing
+artifact-name: signed.rpm 
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/refs/heads/rpm/unsigned.rpm
