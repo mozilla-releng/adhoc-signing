@@ -21,6 +21,18 @@ This document is for Release Engineering, on how to maintain this repo, and how 
    - In the `Promote an adhoc signature` page, fill in the `adhoc_name`. This will match the name of the new signing manifest, minus the trailing `.yml`. So if you just added `bug12345.yml` for this signing request, your `adhoc_name` would be `bug12345`.
    - Click `Promote an Adhoc Signature` in the bottom right. This will spawn an action task. Once it goes green, go to the action task group by changing the url from `tasks/TASKID` to `tasks/groups/TASKID`. (The `Task Group` link in the top left will bring you to the *decision task group*, not the *action task group*.) The `release-signing` task will have the signed artifact.
 
+## Running CI on a pull request from a non-collaborator
+
+Pull requests from people who aren't collaborators on this repo don't get any CI,
+because the fetch and dep-signing tasks run code and sign artifacts described by
+the pull request itself.
+
+Once you have reviewed the pull request and are satisfied it is safe to run,
+comment `/taskcluster ci` on it. That runs the same fetch, dep-signing and
+pr-complete tasks a collaborator's pull request would get. Only collaborators can
+trigger this, and the comment has to be re-posted after each new push to the
+pull request.
+
 ## Troubleshooting
 
 ### Fetch tasks failing due to size mismatch
