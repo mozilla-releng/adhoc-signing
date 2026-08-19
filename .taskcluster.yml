@@ -9,6 +9,9 @@ reporting: checks-v1
 autoCancelPreviousChecks: true
 policy:
     pullRequests: public_restricted
+    # lets collaborators run CI on an untrusted pull request by commenting
+    # `/taskcluster ci` on it
+    allowComments: collaborators
 tasks:
     - $let:
           trustDomain: adhoc
@@ -16,33 +19,33 @@ tasks:
               $switch:
                   'tasks_for == "github-push"': '${event.pusher.email}'
                   'tasks_for == "github-release"': '${event.sender.login}@users.noreply.github.com'
-                  'tasks_for[:19] == "github-pull-request"': '${event.pull_request.user.login}@users.noreply.github.com'
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': '${event.pull_request.user.login}@users.noreply.github.com'
                   'tasks_for in ["cron", "action", "pr-action"]': '${tasks_for}@noreply.mozilla.org'
           baseRepoUrl:
               $switch:
-                  'tasks_for[:19] == "github-pull-request"': '${event.pull_request.base.repo.html_url}'
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': '${event.pull_request.base.repo.html_url}'
                   'tasks_for in ["cron", "action"]': '${repository.url}'
                   'tasks_for == "pr-action"': '${repository.base_url}'
                   $default: '${event.repository.html_url}'
           repoUrl:
               $switch:
-                  'tasks_for[:19] == "github-pull-request"': '${event.pull_request.head.repo.html_url}'
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': '${event.pull_request.head.repo.html_url}'
                   'tasks_for in ["cron", "action", "pr-action"]': '${repository.url}'
                   $default: '${event.repository.html_url}'
           project:
               $switch:
                   'tasks_for in ["github-push", "github-release"]': '${event.repository.name}'
-                  'tasks_for[:19] == "github-pull-request"': '${event.pull_request.base.repo.name}'
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': '${event.pull_request.base.repo.name}'
                   'tasks_for in ["cron", "action", "pr-action"]': '${repository.project}'
           head_branch:
               $switch:
-                  'tasks_for[:19] == "github-pull-request"': ${event.pull_request.head.ref}
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': ${event.pull_request.head.ref}
                   'tasks_for == "github-push"': ${event.ref}
                   'tasks_for == "github-release"': '${event.release.target_commitish}'
                   'tasks_for in ["cron", "action", "pr-action"]': '${push.branch}'
           base_ref:
               $switch:
-                  'tasks_for[:19] == "github-pull-request"': ${event.pull_request.base.ref}
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': ${event.pull_request.base.ref}
                   'tasks_for == "github-push" && event.base_ref': ${event.base_ref}
                   'tasks_for == "github-push" && !(event.base_ref)': ${event.ref}
                   'tasks_for == "github-release"': ''
@@ -50,7 +53,7 @@ tasks:
                   'tasks_for == "pr-action"': '${push.base_branch}'
           head_ref:
               $switch:
-                  'tasks_for[:19] == "github-pull-request"': ${event.pull_request.head.ref}
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': ${event.pull_request.head.ref}
                   'tasks_for == "github-push"': ${event.ref}
                   'tasks_for == "github-release"': ${event.release.tag_name}
                   'tasks_for in ["cron", "action", "pr-action"]': '${push.branch}'
@@ -58,13 +61,13 @@ tasks:
               $switch:
                   'tasks_for == "github-push"': '${event.before}'
                   'tasks_for == "github-release"': '${event.release.target_commitish}'
-                  'tasks_for[:19] == "github-pull-request"': '${event.pull_request.base.sha}'
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': '${event.pull_request.base.sha}'
                   'tasks_for in ["cron", "action", "pr-action"]': '${push.revision}'
           head_sha:
               $switch:
                   'tasks_for == "github-push"': '${event.after}'
                   'tasks_for == "github-release"': '${event.release.tag_name}'
-                  'tasks_for[:19] == "github-pull-request"': '${event.pull_request.head.sha}'
+                  'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"': '${event.pull_request.head.sha}'
                   'tasks_for in ["cron", "action", "pr-action"]': '${push.revision}'
           ownTaskId:
               $switch:
@@ -79,7 +82,7 @@ tasks:
               then: ${event.action}
               else: 'UNDEFINED'
           isPullRequest:
-              $eval: 'tasks_for[:19] == "github-pull-request"'
+              $eval: 'tasks_for[:19] == "github-pull-request" || tasks_for == "github-issue-comment"'
       in:
           $let:
               short_base_ref:
@@ -101,6 +104,7 @@ tasks:
                   tasks_for in ["action", "pr-action", "cron"]
                   || (tasks_for == "github-push" && short_head_ref == "main")
                   || (isPullRequest && pullRequestAction in ["opened", "reopened", "synchronize"])
+                  || (tasks_for == "github-issue-comment" && event.taskcluster_comment == "ci")
               then:
                   taskId: {$if: 'tasks_for != "action" && tasks_for != "pr-action"', then: '${ownTaskId}'}
                   taskGroupId:
@@ -171,8 +175,13 @@ tasks:
                       $switch:
                           'tasks_for in ["github-push"]':
                               - 'assume:repo:${repoUrl[8:]}:branch:${short_head_ref}'
-                          'isPullRequest':
+                          'tasks_for[:19] == "github-pull-request"':
                               - 'assume:repo:github.com/${event.pull_request.base.repo.full_name}:${tasks_for[7:]}'
+                          # comments are only allowed from collaborators, so they
+                          # get the trusted pull-request role even when the pull
+                          # request itself is untrusted
+                          'tasks_for == "github-issue-comment"':
+                              - 'assume:repo:github.com/${event.pull_request.base.repo.full_name}:pull-request'
                           'tasks_for == "action"':
                               - 'assume:repo:${repoUrl[8:]}:action:${action.action_perm}'
                           'tasks_for == "pr-action"':
@@ -234,6 +243,14 @@ tasks:
                               - -cx
                               - $let:
                                     extraArgs: {$if: 'tasks_for == "cron"', then: '${cron.quoted_args}', else: ''}
+                                    # a `/taskcluster ci` comment asks for the CI of
+                                    # the pull request it was made on, so let
+                                    # taskgraph generate the exact same graph it
+                                    # would for a trusted pull request
+                                    decisionTasksFor:
+                                        $if: 'tasks_for == "github-issue-comment"'
+                                        then: 'github-pull-request'
+                                        else: '${tasks_for}'
                                 in:
                                     $if: 'tasks_for in ["action", "pr-action"]'
                                     then: >
@@ -250,7 +267,7 @@ tasks:
                                         --owner='${ownerEmail}'
                                         --level='${level}'
                                         --repository-type=git
-                                        --tasks-for='${tasks_for}'
+                                        --tasks-for='${decisionTasksFor}'
                                         --base-repository='${baseRepoUrl}'
                                         --base-ref='${base_ref}'
                                         --base-rev='${base_sha}'
