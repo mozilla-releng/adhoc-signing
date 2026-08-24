@@ -2,6 +2,8 @@
 trust-domain: adhoc
 
 task-priority: high
+task-deadline-after: 4 hours
+task-expires-after: 4 hours 1 second
 # XXX once I figure out how to fix this
 #    by-level:
 #        3: very-high

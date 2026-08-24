@@ -6,8 +6,6 @@
 import copy
 
 
-
-
 def loader(kind, path, config, params, loaded_tasks):
     """
     Load tasks based on the tasks dependant kinds.
@@ -38,3 +36,25 @@ def loader(kind, path, config, params, loaded_tasks):
             task.update(copy.deepcopy(task_template))
 
         yield task
+
+
+def combined_loader(kind, path, config, params, loaded_tasks):
+    task_template = config.get("task-template")
+    dependencies = sorted(
+        (
+            task
+            for task in loaded_tasks
+            if task.kind in config.get("kind-dependencies", [])
+        ),
+        key=lambda task: task.label,
+    )
+    if not dependencies:
+        return
+
+    task = {
+        "primary-dependency": dependencies[0],
+        "additional-dependencies": dependencies[1:],
+    }
+    if task_template:
+        task.update(copy.deepcopy(task_template))
+    yield task

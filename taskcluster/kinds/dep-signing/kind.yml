@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 ---
 
-loader: adhoc_taskgraph.loader.single_dep:loader
+loader: adhoc_taskgraph.loader.single_dep:combined_loader
 
 kind-dependencies:
     - fetch

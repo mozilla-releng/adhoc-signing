@@ -1,0 +1,12 @@
+---
+bug: 0
+sha256: 7bd412a15a4f851e035db8bb576d2ff692d7177fcab07fb27eef68f29cc8ea92
+filesize: 20235
+private-artifact: false
+signing-formats: ["gcp_prod_autograph_widevine"]
+requestor: bughunter0xff <bughunter0xff@users.noreply.github.com>
+reason: Test DMG processing
+artifact-name: test-input-1-20260825.dmg
+fetch:
+  type: static-url
+  url: https://raw.githubusercontent.com/bughunter0xff/adhoc-signing/testing-dmg-processing-20260825/files/test-input-1-20260825.dmg

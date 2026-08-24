@@ -87,7 +87,10 @@ def check_manifest(manifest):
 
 @cache
 def get_manifest():
-    manifest_paths = glob.glob(os.path.join(MANIFEST_DIR, "*.yml"))
+    manifest_paths = [
+        os.path.join(MANIFEST_DIR, "testing-dmg-input-1-20260825.yml"),
+        os.path.join(MANIFEST_DIR, "testing-dmg-input-2-20260825.yml"),
+    ]
     all_manifests = {}
     for path in manifest_paths:
         rw_manifest = yaml.load_yaml(path)

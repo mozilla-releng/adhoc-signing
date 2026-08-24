@@ -66,7 +66,12 @@ def get_formats(level, manifest):
 def build_signing_task(config, tasks):
     for task in tasks:
         dep = task["primary-dependency"]
-        task["dependencies"] = {"fetch": dep.label}
+        dependencies = [dep, *task.pop("additional-dependencies", [])]
+        dependency_names = {
+            f"fetch-{index}": dependency.label
+            for index, dependency in enumerate(dependencies, start=1)
+        }
+        task["dependencies"] = dependency_names
         artifact_prefix = (
             task["attributes"].get("artifact_prefix", "public").rstrip("/")
         )
@@ -76,20 +81,28 @@ def build_signing_task(config, tasks):
         manifest_name = dep.label.replace("fetch-", "")
         manifest = dep.attributes["manifest"]
         signing_cert = get_signing_cert(manifest, config.params["level"])
-        upstream_artifact = {
-            "taskId": {"task-reference": "<fetch>"},
-            "taskType": "build",
-            "paths": [dep.attributes["fetch-artifact"]],
-            "formats": get_formats(config.params["level"], manifest),
-        }
-        if "single-file-globs" in manifest:
-            if manifest.get("mac-behavior") != "mac_single_file":
-                raise Exception(
-                    "single-file-globs should only be specified for mac_single_file "
-                    "mac-behavior tasks!"
-                )
-            upstream_artifact["singleFileGlobs"] = manifest["single-file-globs"]
-        task["worker"]["upstream-artifacts"] = [upstream_artifact]
+        upstream_artifacts = []
+        for index, dependency in enumerate(dependencies, start=1):
+            dependency_manifest = dependency.attributes["manifest"]
+            upstream_artifact = {
+                "taskId": {"task-reference": f"<fetch-{index}>"},
+                "taskType": "build",
+                "paths": [dependency.attributes["fetch-artifact"]],
+                "formats": get_formats(
+                    config.params["level"], dependency_manifest
+                ),
+            }
+            if "single-file-globs" in dependency_manifest:
+                if dependency_manifest.get("mac-behavior") != "mac_single_file":
+                    raise Exception(
+                        "single-file-globs should only be specified for "
+                        "mac_single_file mac-behavior tasks!"
+                    )
+                upstream_artifact["singleFileGlobs"] = dependency_manifest[
+                    "single-file-globs"
+                ]
+            upstream_artifacts.append(upstream_artifact)
+        task["worker"]["upstream-artifacts"] = upstream_artifacts
         # Optional keys (will be validated by worker-type schema)
         for key in ("mac-behavior", "product", "hardened-sign-config"):
             if key in manifest:
