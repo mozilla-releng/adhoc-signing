@@ -25,4 +25,4 @@ task-template:
     worker:
         signing-type: dep-signing
         max-run-time: 3600
-    run-on-tasks-for: ['action', 'github-pull-request']
+    run-on-tasks-for: ['action', 'github-pull-request', 'github-pull-request-untrusted']
