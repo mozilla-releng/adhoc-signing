@@ -1,0 +1,13 @@
+---
+bug: 2077253
+sha256: 3ee5314093808f4fed4a6954624428dd1f6f38d32911034b1c6b294726c93ff7
+filesize: 307473850
+private-artifact: false
+signing-formats: ["gcp_prod_autograph_apk"]
+signing-cert: release-signing
+requestor: John Oberhauser <joberhauser@mozilla.com>
+reason: Sign Fenix Android Automotive internal testing build for Google Play Console upload
+artifact-name: fenix-automotive-2077253.aab
+fetch:
+  type: static-url
+  url: https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/GJr1XjbxQoaGPNxdI7JL6g/runs/0/artifacts/public/build/target.aab
