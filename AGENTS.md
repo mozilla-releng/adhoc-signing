@@ -25,34 +25,10 @@ expected rationale and artifact evidence.
 Artifacts are public under the current workflow. End-to-end private artifact support is
 incomplete; do not promise privacy based on the `private-artifact` field.
 
-## Test the fetch task locally
-
-For a manifest PR, use the `fetch-<manifest_name>` task label. Generate the graph with a
-temporary params file for the PR event. This repository has no checked-in PR params
-fixture:
-
-```bash
-TASK_LABEL=fetch-bugNNNNNN
-PARAMS_FILE=/tmp/adhoc-signing-pr-params.yml
-GRAPH_FILE=/tmp/adhoc-signing-target-graph.json
-TASK_FILE=/tmp/adhoc-signing-fetch-task.json
-
-uv run --with-editable "<taskgraph_repo>" taskgraph target-graph \
-  --root taskcluster -p "$PARAMS_FILE" --json > "$GRAPH_FILE"
-jq -e --arg label "$TASK_LABEL" '.[$label].task' "$GRAPH_FILE" > "$TASK_FILE"
-uv run --with-editable "<taskgraph_repo>[load-image]" taskgraph load-task \
-  --root taskcluster --image fetch - < "$TASK_FILE"
-```
-
-`--image fetch` builds this repository's `taskcluster/docker/fetch` image locally. It is
-the image produced by the `docker-image-fetch` task. This runs the manifest's fetch task
-in Docker and does not execute a signing task. Docker must be running.
-
-Do not promote a manifest or trigger production signing while preparing a routine PR
-unless the user explicitly requests that action. For Taskgraph code changes, inspect
-[`.taskcluster.yml`](.taskcluster.yml), [`taskcluster/config.yml`](taskcluster/config.yml),
-and the affected kind; follow the configured Taskcluster workflow instructions and reuse
-existing upstream transforms.
+Do not promote a manifest or trigger production signing while preparing a routine PR.
+For Taskgraph code changes, inspect [`.taskcluster.yml`](.taskcluster.yml),
+[`taskcluster/config.yml`](taskcluster/config.yml), and the affected kind; follow the
+configured Taskcluster workflow instructions and reuse existing upstream transforms.
 
 See [docs/how-to-request.md](docs/how-to-request.md) for requester guidance and
 [docs/releng.md](docs/releng.md) for the complete maintainer workflow.
