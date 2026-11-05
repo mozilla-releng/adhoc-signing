@@ -1,0 +1,52 @@
+---
+bug: 0000000
+sha256: 295ed2e298cd64bb8c28d320b93979bbd90845232317b9d8c7bd279654ed90da
+filesize: 102225095
+private-artifact: false
+signing-formats: ["macapp", "autograph_widevine", "autograph_omnija"]
+requestor: Heitor Neiva <hneiva@mozilla.com>
+reason: Firefox Nighly with provisioning profile
+product: firefox
+artifact-name: target.tar.gz
+mac-behavior: mac_sign_and_pkg_hardened
+signingscript-notarization: true
+hardened-sign-config:
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/v2/production/plugin-container.xml
+    globs:
+      - "/Contents/MacOS/plugin-container.app"
+
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://hg.mozilla.org/mozilla-central/raw-file/tip/security/mac/hardenedruntime/v2/production/media-plugin-helper.xml
+    globs:
+      - "/Contents/MacOS/media-plugin-helper.app"
+
+  - deep: false
+    runtime: true
+    force: true
+    # These files are signed wihtout entitlements
+    globs:
+      - "/Contents/MacOS/crashreporter.app"
+      - "/Contents/MacOS/updater.app"
+      - "/Contents/Library/LaunchServices/org.mozilla.updater"
+      - "/Contents/MacOS/XUL"
+      - "/Contents/MacOS/pingsender"
+      - "/Contents/MacOS/minidump-analyzer"
+      - "/Contents/MacOS/*.dylib"
+      - "/Contents/Resources/gmp-clearkey/*/*.dylib"
+
+  - deep: false
+    runtime: true
+    force: true
+    entitlements: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/hneiva/nightly-pprofile/browser.xml
+    globs:
+      - "/Contents/MacOS/firefox-bin"
+      - "/"  # The .app
+
+fetch:
+  type: static-url
+  url: https://github.com/mozilla-releng/adhoc-signing-blobs/raw/hneiva/nightly-pprofile/target.dmg
